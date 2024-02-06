@@ -1034,13 +1034,18 @@ private struct FfiConverterOptionTypeComputationResult: FfiConverterRustBuffer {
     }
 }
 
-public func add(left: Int64, right: Int64) -> Int64 {
-    return try! FfiConverterInt64.lift(
+public func safeAdditionOperator() -> BinaryOperator {
+    return try! FfiConverterTypeBinaryOperator.lift(
         try! rustCall {
-            uniffi_foobar_fn_func_add(
-                FfiConverterInt64.lower(left),
-                FfiConverterInt64.lower(right), $0
-            )
+            uniffi_foobar_fn_func_safe_addition_operator($0)
+        }
+    )
+}
+
+public func safeDivisionOperator() -> BinaryOperator {
+    return try! FfiConverterTypeBinaryOperator.lift(
+        try! rustCall {
+            uniffi_foobar_fn_func_safe_division_operator($0)
         }
     )
 }
@@ -1061,7 +1066,10 @@ private var initializationResult: InitializationResult {
     if bindings_contract_version != scaffolding_contract_version {
         return InitializationResult.contractVersionMismatch
     }
-    if uniffi_foobar_checksum_func_add() != 11759 {
+    if uniffi_foobar_checksum_func_safe_addition_operator() != 2550 {
+        return InitializationResult.apiChecksumMismatch
+    }
+    if uniffi_foobar_checksum_func_safe_division_operator() != 26772 {
         return InitializationResult.apiChecksumMismatch
     }
     if uniffi_foobar_checksum_method_binaryoperator_perform() != 6069 {

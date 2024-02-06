@@ -36,6 +36,13 @@ Hope this helps!
 
 ## Quick start
 
+### Rust
+
+Open up the project in your favorite editor and poke around the Cargo workspace
+under `rust/`!
+All of the code is in `foobar/src/lib.rs`, including several unit tests
+to demonstrate the Rust API.
+
 ### iOS
 
 Before opening up the Swift package in Xcode, you'll probably want to build the Rust core.
@@ -48,9 +55,21 @@ cd rust/
 This generates an XCFramework and generates Swift bindings to the Rust core.
 Check the script if you're interested in the gritty details.
 
+**You need to do this every time you make Rust changes that you want reflected in the Swift Package!**
+
+From there, open up the Package in Xcode and poke around `SafeCalculator`
+and `SafeMultiply`.
+You can also run unit tests from within Xcode to do some basic verification.
+
 ### Android
 
-TODO
+Open up the `android` project in Android Studio and you're good to go.
+The app target is intentionally left blank.
+Like iOS, the interesting stuff lives under the
+`SafeCalculator` and `SafeMultiply` classes.
+You can also check out the Android tests.
+Note that these currently run on-device
+due to an issue described at the top of the file.
 
 ## Learning more
 

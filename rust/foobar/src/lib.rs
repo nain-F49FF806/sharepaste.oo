@@ -139,6 +139,20 @@ impl BinaryOperator for SafeDivision {
     }
 }
 
+// Helpers that only exist because the concrete objects above DO NOT have the requisite protocol conformances
+// stated in the glue code. It's easy to extend classes in Swift, but you can't just declare a conformance in Kotlin.
+// So, to keep things easy, we just do this as a compromise.
+
+#[uniffi::export]
+fn safe_addition_operator() -> Arc<dyn BinaryOperator> {
+    Arc::new(SafeAddition::new())
+}
+
+#[uniffi::export]
+fn safe_division_operator() -> Arc<dyn BinaryOperator> {
+    Arc::new(SafeDivision::new())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

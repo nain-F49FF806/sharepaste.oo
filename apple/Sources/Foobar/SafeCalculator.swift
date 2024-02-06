@@ -1,10 +1,10 @@
 import UniFFI
 
 public class SafeCalculator {
-    /// Functional core; imperative shell. This is purely internal state with an imperative API wrapper.
+    // Functional core; imperative shell. This is purely internal state with an imperative API wrapper.
     private var calc = UniFFI.Calculator()
 
-    private let addOp = SafeAddition()
+    private let addOp = safeAdditionOperator()
     private let mulOp = SafeMultiply()
 
     var lastValue: UniFFI.ComputationResult? {
@@ -25,7 +25,7 @@ public class SafeCalculator {
 
     /// Chains addition using the previous computation result.
     ///
-    /// Throws if there is no previous state for this calculator.
+    /// Throws if the result overflows or there is no previous state for this calculator.
     public func chainAdd(rhs: Int64) throws -> ComputationResult {
         calc = try calc.calculateMore(op: addOp, rhs: rhs)
 
@@ -49,7 +49,7 @@ public class SafeCalculator {
 
     /// Chains multiplication using the previous computation result.
     ///
-    /// Throws if there is no previous state for this calculator.
+    /// Throws if the result overflows or there is no previous state for this calculator.
     public func chainMul(rhs: Int64) throws -> ComputationResult {
         calc = try calc.calculateMore(op: mulOp, rhs: rhs)
 
