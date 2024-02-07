@@ -1,37 +1,45 @@
 # UniFFI Starter
 
 This is a simple, mostly minimal, but more-complex-than-just-addition
-demonstration of how to use [UniFFI](https://github.com/mozilla/uniffi-rs) in a standard architecture.
+demonstration of how to use [UniFFI](https://github.com/mozilla/uniffi-rs)
+in a structure that works for MOST use cases.
 
-The project has a Rust core as well as separate mobile targets
-in a structure that should be amenable to forking as a starter template
-for library authors wanting to share code across platforms.
+The project has a Rust core, a Swift Package, and a Gradle project
+in a structure that I've found to be fairly general.
+The goal is for you to fork this as as starter to get past the boilerplate
+and get started writing your cross-platform library.
 
 ## Motivating use case
 
 As promised, it's more complex than addition, but it's intentionally
 a bit ridiculous to keep things fun and demonstrate a wide range of uses
-in a fairly compact project.
+in a small project.
+I say small, but note that the vast majority is boilerplate
+Read on for a guide to the "good parts".
+
 We're building a "safe" calculator that can do integer arithmetic.
+(The usual demostrations of just addition are not complex enough to be very useful.)
 The Rust core will provide addition and division operators.
-The native code will supply other operators.
-And because nobody knows where math is going next,
-it's completely extensible with new operators!
+The native code will show you how to supply your OWN operators written in Swift and Kotlin.
+Because nobody knows where math is going next,
+this OBVIOUSLY needs to be completely extensible with new operators ;)
 
-By "safe" of course I mean that in the Rust side, everything returns a result,
-which is translated into exceptions in iOS and Android.
-At least you'll get a clean exception from Rust telling you about your integer
-overflows and division by zero!
+By "safe" of course I mean that on the Rust side, everything returns a result,
+which is translated into exceptions for iOS and Android.
+At least you'll get a clean exception from Rust to let you know
+about your integer overflows and division by zero!
 
-This should illustrate just about everything from result types to enums to objects.
 Now if this is all starting to sound like every other over-engineered (read: ruined) 
-Java project, don't fret.
-In the spirit of Rust, this demonstration library also embraces
-functional core/imperative shell architecture.
+Java project, it definitely is, but I hope it's useful
+in showing a wide range of examples in an easy-to-understand project.
 
-In complete seriousness, while this is total overkill for a calculator app,
-you really SHOULD strongly consider using most of these patterns
+This demonstration library also embraces the
+functional core/imperative shell architecture.
+Jokes about over-engineering aside,
+while this is total overkill for a calculator app,
+you really SHOULD strongly consider using this pattern
 for any non-trivial real-world library.
+
 Hope this helps!
 
 ## Quick start
@@ -40,12 +48,16 @@ Hope this helps!
 
 Open up the project in your favorite editor and poke around the Cargo workspace
 under `rust/`!
-All of the code is in `foobar/src/lib.rs`, including several unit tests
+
+#### Stuff to look at 
+
+* All of the code is in `foobar/src/lib.rs`, including several unit tests
 to demonstrate the Rust API.
+* Also check `Cargo.toml` and the overall workspace structure to see how a UniFFI project needs to be structured on the Rust side.
 
 ### iOS
 
-Before opening up the Swift package in Xcode, you'll probably want to build the Rust core.
+Before opening up the Swift package in Xcode, you need to build the Rust core.
 
 ```shell
 cd rust/
@@ -57,19 +69,24 @@ Check the script if you're interested in the gritty details.
 
 **You need to do this every time you make Rust changes that you want reflected in the Swift Package!**
 
-From there, open up the Package in Xcode and poke around `SafeCalculator`
-and `SafeMultiply`.
-You can also run unit tests from within Xcode to do some basic verification.
+#### Stuff to look at
+
+* `Package.swift` documents the UniFFI setup (which is... special thanks to SPM quirks).
+* `SafeCalculator` and `SafeMultiply` in `Sources/Foobar` contain the Swift-y calculator wrapper class and multiplication operator.
+* The unit tests in `Tests/FoobarTests/SafeCalculatorTests.swift` demonstrate usage.
 
 ### Android
 
-Open up the `android` project in Android Studio and you're good to go.
-The app target is intentionally left blank.
-Like iOS, the interesting stuff lives under the
-`SafeCalculator` and `SafeMultiply` classes.
-You can also check out the Android tests.
-Note that these currently run on-device
-due to an issue described at the top of the file.
+Just open up the `android` project in Android Studio and you're good to go.
+It took forever to get the tooling right, but now that it's there, it just works.
+Note that the app target is intentionally left blank.
+
+#### Stuff to look at
+
+* The interesting stuff lives under the `SafeCalculator` and `SafeMultiply` classes.
+* Also check out the tests for an example of usage.
+* You can also check out the Android tests.
+* The gradle files are mostly boilerplate, but there are a few things in there needed for building the Rust library. That took a while to figure out, and I currently believe this is the easiest approach.
 
 ## Learning more
 
