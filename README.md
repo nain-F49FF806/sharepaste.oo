@@ -54,6 +54,7 @@ under `rust/`!
 * All of the code is in `foobar/src/lib.rs`, including several unit tests
 to demonstrate the Rust API.
 * Also check `Cargo.toml` and the overall workspace structure to see how a UniFFI project needs to be structured on the Rust side.
+* Check out `rust-toolchain.toml`; **if you aren't using `rustup`, this is your checklist of toolchains to install!**
 
 ### iOS
 
@@ -76,6 +77,19 @@ Check the script if you're interested in the gritty details.
 * The unit tests in `Tests/FoobarTests/SafeCalculatorTests.swift` demonstrate usage.
 
 ### Android
+
+Android is pretty easy to get rolling, and Gradle will build everything for you
+after you get a few things set up.
+Most importantly, you need to install [`cargo-ndk`](https://github.com/bbqsrc/cargo-ndk).
+
+```shell
+cargo install cargo-ndk
+```
+
+If you've tried building the Rust library already and you have rustup,
+the requisite targets will probably be installed automatically.
+If not, follow the steps in the [`cargo-ndk` README](https://github.com/bbqsrc/cargo-ndk)
+to install the required Android targets.
 
 Just open up the `android` project in Android Studio and you're good to go.
 It took forever to get the tooling right, but now that it's there, it just works.
