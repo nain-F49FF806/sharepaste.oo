@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace 'com.ianthetechie.foobar.core'
+    namespace 'alt.nainapps.sharepaste.core'
     compileSdk 34
 
     defaultConfig {

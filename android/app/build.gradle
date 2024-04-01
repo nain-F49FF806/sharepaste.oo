@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.ianthetechie.foobar'
+    namespace 'alt.nainapps.sharepaste'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.ianthetechie.foobar"
+        applicationId "alt.nainapps.sharepaste"
         minSdk 29
         targetSdk 34
         versionCode 1

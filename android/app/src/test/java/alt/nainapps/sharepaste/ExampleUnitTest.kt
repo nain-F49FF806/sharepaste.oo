@@ -1,4 +1,4 @@
-package com.ianthetechie.foobar
+package alt.nainapps.sharepaste
 
 import org.junit.Test
 
