@@ -1,9 +1,6 @@
 [workspace]
 
-members = [
-    "foobar",
-    "uniffi-bindgen",
-]
+members = ["foobar", "uniffi-bindgen", "pbcli"]
 resolver = "2"
 
 [workspace.dependencies]
