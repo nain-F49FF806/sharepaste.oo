@@ -1134,6 +1134,7 @@ dependencies = [
  "terminal_size",
  "typenum",
  "uniffi 0.26.1",
+ "uniffi 0.27.0",
  "url",
 ]
 
@@ -1801,9 +1802,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5ad0be8bba6c242d2d16922de4a9c8f167b9491729fda552e70f8626bf7302cb"
 dependencies = [
  "anyhow",
- "camino",
- "clap 4.4.18",
- "uniffi_bindgen 0.26.1",
  "uniffi_build 0.26.1",
  "uniffi_core 0.26.1",
  "uniffi_macros 0.26.1",
@@ -1841,7 +1839,6 @@ dependencies = [
  "askama",
  "camino",
  "cargo_metadata",
- "clap 4.4.18",
  "fs-err",
  "glob",
  "goblin",
