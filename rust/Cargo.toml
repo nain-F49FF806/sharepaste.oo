@@ -4,4 +4,4 @@ members = ["foobar", "uniffi-bindgen", "pbcli"]
 resolver = "2"
 
 [workspace.dependencies]
-uniffi = "0.26.1"
+uniffi = "0.27"
