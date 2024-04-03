@@ -1,4 +1,4 @@
-package alt.nainapps.sharepaste.privatebin.model
+package alt.nainapps.sharepaste.privatebinKt.model
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer

@@ -62,7 +62,7 @@ android.libraryVariants.all { variant ->
             commandLine 'cargo', 'run', '-p', 'uniffi-bindgen', 'generate',
                     '--library', project.file("./src/main/jniLibs/arm64-v8a/${libraryName}"),
                     '--language', 'kotlin',
-                    '--out-dir', project.file("${buildDir}/generated/source/uniffi/${variant.name}/kotlin")
+                    '--out-dir', project.file("${buildDir}/generated/source/uniffi/${variant.name}/java")
 
             dependsOn "buildCargoNdk${variant.name.capitalize()}"
         }
@@ -73,7 +73,8 @@ android.libraryVariants.all { variant ->
     }
     def sourceSet = variant.sourceSets.find { it.name == variant.name }
 
-    sourceSet.kotlin.srcDir new File(buildDir, "generated/source/uniffi/${variant.name}/kotlin")
-
-//    sourceSet.kotlin.srcDir 'src/main/kotlin'
+    sourceSet.kotlin.srcDir new File(buildDir, "generated/source/uniffi/${variant.name}/java")
+    sourceSet.java.srcDir new File(buildDir, "generated/source/uniffi/${variant.name}/java")
+//    sourceSet.kotlin.srcDir 'src/main/java'
+//    sourceSet.java.srcDir 'src/main/java'
 }

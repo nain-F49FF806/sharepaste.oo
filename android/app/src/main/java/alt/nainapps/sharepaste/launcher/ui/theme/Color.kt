@@ -1,4 +1,4 @@
-package alt.nainapps.sharepaste.ui.theme
+package alt.nainapps.sharepaste.launcher.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -1,6 +1,5 @@
-package alt.nainapps.sharepaste
+package alt.nainapps.sharepaste.oldui
 
-import alt.nainapps.sharepaste.privatebin.swiftEncrypt
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -24,7 +23,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @Composable
-fun EncryptScreen() {
+fun DecryptScreen() {
     var inputText by rememberSaveable { mutableStateOf("") }
     var encryptedText by rememberSaveable { mutableStateOf("") }
     var decryptionKey by rememberSaveable { mutableStateOf("") }
@@ -35,15 +34,19 @@ fun EncryptScreen() {
         OutlinedTextField(
             value = inputText,
             onValueChange = { inputText = it },
-            label = { Text("Enter text to encrypt") },
+            label = { Text("Enter paste to decrypt") },
             minLines = 3
+        )
+        OutlinedTextField(
+            value = decryptionKey,
+            onValueChange = { decryptionKey = it },
+            label = { Text("Decryption #Key") },
         )
         Button(onClick = {
             isLoading = true
             coroutineScope.launch(Dispatchers.Default) {
-                val (base58EncodedSeed, encryptedPaste) = swiftEncrypt(inputText)
-                encryptedText = encryptedPaste
-                decryptionKey = base58EncodedSeed
+                val plainPaste = inputText //swiftDecrypt(inputText, decryptionKey)
+                encryptedText = plainPaste
                 isLoading = false
             }
         }) {
@@ -53,31 +56,23 @@ fun EncryptScreen() {
                     color = MaterialTheme.colorScheme.onPrimary
                 )
             } else {
-                Text("Encrypt")
+                Text("Decrypt")
             }
         }
         if (encryptedText.isNotEmpty()) {
             OutlinedTextField(
                 value = encryptedText,
                 onValueChange = {}, // No action on value change
-                label = { Text("Private Paste Raw") },
+                label = { Text("Decrypted Paste") },
                 readOnly = true, // Makes the text field read-only
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.None)
             )
-            OutlinedTextField(
-                value = decryptionKey,
-                onValueChange = {}, // No action on value change
-                label = { Text("Decryption #Key") },
-                readOnly = true, // Makes the text field read-only
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.None)
-            )
-
         }
     }
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun PreviewEncryptedInput() {
-    EncryptScreen()
+fun PreviewDecryptScreen() {
+    DecryptScreen()
 }

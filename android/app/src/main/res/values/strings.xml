@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Share Paste (Privatebin)</string>
+    <string name="app_name">Share Paste O2</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>

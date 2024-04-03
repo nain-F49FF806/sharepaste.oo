@@ -1,4 +1,4 @@
-package alt.nainapps.sharepaste.ui.theme
+package alt.nainapps.sharepaste.oldui.ui.theme
 
 import android.app.Activity
 import android.os.Build

@@ -1,13 +1,13 @@
-package alt.nainapps.sharepaste.privatebin
+package alt.nainapps.sharepaste.privatebinKt
 
-import alt.nainapps.sharepaste.privatebin.model.CompressionType
-import alt.nainapps.sharepaste.privatebin.model.PlainPasteAAData
-import alt.nainapps.sharepaste.privatebin.model.PlainPasteData
-import alt.nainapps.sharepaste.privatebin.model.PrivatebinPasteEncryptionParams
-import alt.nainapps.sharepaste.privatebin.model.PrivatebinPasteMetaData
-import alt.nainapps.sharepaste.privatebin.model.PrivatebinPastePassphrase
-import alt.nainapps.sharepaste.privatebin.model.PrivatebinPasteV2
-import alt.nainapps.sharepaste.privatebin.model.TextFormatter
+import alt.nainapps.sharepaste.privatebinKt.model.CompressionType
+import alt.nainapps.sharepaste.privatebinKt.model.PlainPasteAAData
+import alt.nainapps.sharepaste.privatebinKt.model.PlainPasteData
+import alt.nainapps.sharepaste.privatebinKt.model.PrivatebinPasteEncryptionParams
+import alt.nainapps.sharepaste.privatebinKt.model.PrivatebinPasteMetaData
+import alt.nainapps.sharepaste.privatebinKt.model.PrivatebinPastePassphrase
+import alt.nainapps.sharepaste.privatebinKt.model.PrivatebinPasteV2
+import alt.nainapps.sharepaste.privatebinKt.model.TextFormatter
 import java.io.ByteArrayOutputStream
 import java.util.Base64
 import java.util.zip.DeflaterOutputStream
