@@ -31,9 +31,7 @@ fun OutputLinkWithCopyIcon(link: String, label: String = "Link") {
     val clipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     Column(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-
+            .fillMaxWidth(),
     ) {
         TextField(
             value = link,

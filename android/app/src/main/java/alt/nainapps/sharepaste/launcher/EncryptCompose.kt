@@ -5,6 +5,8 @@ import alt.nainapps.sharepase.rsnative.PrivateBinRs
 import alt.nainapps.sharepaste.launcher.units.OptionDropdownMenu
 import alt.nainapps.sharepaste.launcher.units.OutputLinkWithCopyIcon
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -24,14 +26,15 @@ fun EncryptAndShareUI() {
     var textToEncrypt by remember { mutableStateOf("") }
     var expiry by remember { mutableStateOf("5min") }
     var shareLink by remember { mutableStateOf("") }
-    var deletionLink by remember { mutableStateOf("") }
+    var deleteLink by remember { mutableStateOf("") }
     var isLoading by rememberSaveable { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(16.dp)
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -65,7 +68,7 @@ fun EncryptAndShareUI() {
                 val opts = pb.getOpts(expire = expiry)
                 val pbRespose = pb.send(textToEncrypt, opts)
                 shareLink = pbRespose.toUrl(pb.defaultBaseUrl)
-                deletionLink = pbRespose.toDeleteUrl(pb.defaultBaseUrl)
+                deleteLink = pbRespose.toDeleteUrl(pb.defaultBaseUrl)
                 isLoading = false
             }
 
@@ -84,6 +87,10 @@ fun EncryptAndShareUI() {
 
         if (shareLink.isNotEmpty()) {
             OutputLinkWithCopyIcon(link = shareLink, "Share link")
+        }
+
+        if (deleteLink.isNotEmpty()) {
+            OutputLinkWithCopyIcon(link = deleteLink, "Early delete link")
         }
     }
 }
