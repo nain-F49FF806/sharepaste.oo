@@ -14,7 +14,6 @@ bitcoinjCore = "0.17-alpha3"
 appcompat = "1.6.1"
 material = "1.11.0"
 rustCargoNdk = "0.3.4"
-jna = "5.14.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -36,7 +35,6 @@ org-jetbrains-kotlin-plugin-serialization-gradle-plugin = { group = "org.jetbrai
 bitcoinj-core = { group = "org.bitcoinj", name = "bitcoinj-core", version = "0.16.2" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-jna = { group = "net.java.dev.jna", name = "jna", version.ref = "jna" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
