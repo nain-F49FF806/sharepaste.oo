@@ -2,7 +2,7 @@ package alt.nainapps.sharepaste.launcher
 
 
 import alt.nainapps.sharepase.rsnative.PrivateBinRs
-import alt.nainapps.sharepaste.launcher.units.OptionDropdownMenu
+import alt.nainapps.sharepaste.launcher.units.OptionMenu
 import alt.nainapps.sharepaste.launcher.units.OutputLinkWithCopyIcon
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -49,7 +49,7 @@ fun EncryptAndShareUI() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        OptionDropdownMenu(
+        OptionMenu(
             label = "expiry",
             options = listOf("5min", "1hour", "1day", "1week", "1month"),
             defaultOption = "1day"

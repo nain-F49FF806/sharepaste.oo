@@ -18,7 +18,7 @@ import androidx.compose.runtime.setValue
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun <T> OptionDropdownMenu(
+fun <T> OptionMenu(
     label: String,
     options: List<T>,
     defaultOption: T? = null,
@@ -68,5 +68,5 @@ fun <T> OptionDropdownMenu(
 @Composable
 fun TryMenu() {
     val options = listOf("Cupcake", "Donut", "Eclair", "Froyo", "Gingerbread")
-    OptionDropdownMenu("Dessert", options = options, onSelection = {} )
+    OptionMenu("Dessert", options = options, onSelection = {} )
 }
