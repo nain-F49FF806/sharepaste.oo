@@ -18,9 +18,14 @@ import androidx.compose.runtime.setValue
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun <T> OptionDropdownMenu(label: String, options: List<T>, onSelection: (T) -> Unit ) {
+fun <T> OptionDropdownMenu(
+    label: String,
+    options: List<T>,
+    defaultOption: T? = null,
+    onSelection: (T) -> Unit
+) {
     var expanded by remember { mutableStateOf(false) }
-    var selectedOption by remember { mutableStateOf(options[0]) }
+    var selectedOption by remember { mutableStateOf(defaultOption ?: options[0]) }
 
     ExposedDropdownMenuBox(
         expanded = expanded,

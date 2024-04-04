@@ -51,7 +51,8 @@ fun EncryptAndShareUI() {
 
         OptionDropdownMenu(
             label = "expiry",
-            options = listOf("5min", "1hour", "1day", "1week", "1month")
+            options = listOf("5min", "1hour", "1day", "1week", "1month"),
+            defaultOption = "1day"
         ) {
             expiry = it
             println("expiry = $expiry")
