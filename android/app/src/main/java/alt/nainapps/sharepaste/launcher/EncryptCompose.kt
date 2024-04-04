@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
 fun EncryptAndShareUI() {
     var textToEncrypt by rememberSaveable { mutableStateOf("") }
     var expiry by rememberSaveable { mutableStateOf("5min") }
-    var butnOnRead by rememberSaveable { mutableStateOf(false) }
+    var burnOnRead by rememberSaveable { mutableStateOf(false) }
     var shareLink by rememberSaveable { mutableStateOf("") }
     var deleteLink by rememberSaveable { mutableStateOf("") }
     var isLoading by rememberSaveable { mutableStateOf(false) }
@@ -62,7 +62,7 @@ fun EncryptAndShareUI() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-//        SwithWithOnOffIcons(label = "Burn on read") { butnOnRead = it }
+        SwithWithOnOffIcons(label = "Burn on read") { burnOnRead = it }
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -71,7 +71,7 @@ fun EncryptAndShareUI() {
             isLoading = true
             coroutineScope.launch(Dispatchers.IO) {
                 val pb = PrivateBinRs()
-                val opts = pb.getOpts(expire = expiry)
+                val opts = pb.getOpts(expire = expiry, burn = burnOnRead)
                 val pbRespose = pb.send(textToEncrypt, opts)
                 shareLink = pbRespose.toUrl(pb.defaultBaseUrl)
                 deleteLink = pbRespose.toDeleteUrl(pb.defaultBaseUrl)

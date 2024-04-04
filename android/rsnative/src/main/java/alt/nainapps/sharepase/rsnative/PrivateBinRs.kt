@@ -11,11 +11,12 @@ import java.net.URL
 class PrivateBinRs(val defaultBaseUrl: String = "https://privatebin.net") {
     val defaultOpts = getOpts()
 
-    fun getOpts(url: Url? = null, expire: String? = null): Opts {
+    fun getOpts(url: Url? = null, expire: String? = null, burn: Boolean? = null): Opts {
         return Opts(
             url = url ?: defaultBaseUrl,
             format = PasteFormat.PLAINTEXT,
             expire = expire ?: "5min",
+            burn =  burn ?: false,
         )
     }
 
