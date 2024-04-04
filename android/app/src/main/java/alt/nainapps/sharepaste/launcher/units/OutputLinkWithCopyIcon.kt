@@ -54,7 +54,7 @@ fun OutputLinkWithCopyIcon(link: String, label: String = "Link", singleLine: Boo
             IconButton(
                 onClick = {
                     clipboardManager.setPrimaryClip(ClipData.newPlainText(label, link))
-                    Toast.makeText(context, "Copied ${label.lowercase()}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Copied ${label.lowercase()}", Toast.LENGTH_SHORT).show()
                 }
             ) {
                 Icon(imageVector = Icons.Default.Share, contentDescription = "Copy Link" )

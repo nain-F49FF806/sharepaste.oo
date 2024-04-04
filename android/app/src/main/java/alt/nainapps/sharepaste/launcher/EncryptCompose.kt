@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun EncryptAndShareUI() {
     var textToEncrypt by rememberSaveable { mutableStateOf("") }
-    var expiry by rememberSaveable { mutableStateOf("5min") }
+    var expiry by rememberSaveable { mutableStateOf("1day") }
     var burnOnRead by rememberSaveable { mutableStateOf(false) }
     var shareLink by rememberSaveable { mutableStateOf("") }
     var deleteLink by rememberSaveable { mutableStateOf("") }
@@ -54,7 +54,7 @@ fun EncryptAndShareUI() {
         OptionMenu(
             label = "expiry",
             options = listOf("5min", "1hour", "1day", "1week", "1month"),
-            defaultOption = "1day"
+            defaultOption = expiry
         ) {
             expiry = it
             println("expiry = $expiry")
