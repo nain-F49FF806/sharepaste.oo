@@ -4,6 +4,7 @@ package alt.nainapps.sharepaste.launcher
 import alt.nainapps.sharepase.rsnative.PrivateBinRs
 import alt.nainapps.sharepaste.launcher.units.OptionMenu
 import alt.nainapps.sharepaste.launcher.units.OutputLinkWithCopyIcon
+import alt.nainapps.sharepaste.launcher.units.SwithWithOnOffIcons
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -23,10 +24,11 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun EncryptAndShareUI() {
-    var textToEncrypt by remember { mutableStateOf("") }
-    var expiry by remember { mutableStateOf("5min") }
-    var shareLink by remember { mutableStateOf("") }
-    var deleteLink by remember { mutableStateOf("") }
+    var textToEncrypt by rememberSaveable { mutableStateOf("") }
+    var expiry by rememberSaveable { mutableStateOf("5min") }
+    var butnOnRead by rememberSaveable { mutableStateOf(false) }
+    var shareLink by rememberSaveable { mutableStateOf("") }
+    var deleteLink by rememberSaveable { mutableStateOf("") }
     var isLoading by rememberSaveable { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
 
@@ -60,9 +62,12 @@ fun EncryptAndShareUI() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
+//        SwithWithOnOffIcons(label = "Burn on read") { butnOnRead = it }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
         Button(onClick = {
             // Call your encryption function here
-            // For demonstration, let's just set a dummy encrypted link
             isLoading = true
             coroutineScope.launch(Dispatchers.IO) {
                 val pb = PrivateBinRs()
