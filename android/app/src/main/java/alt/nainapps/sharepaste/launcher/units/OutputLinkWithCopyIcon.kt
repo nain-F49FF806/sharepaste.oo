@@ -18,8 +18,10 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalTextInputService
 import androidx.compose.ui.tooling.preview.Preview
 
 
@@ -31,18 +33,23 @@ fun OutputLinkWithCopyIcon(link: String, label: String = "Link", singleLine: Boo
         modifier = Modifier
             .fillMaxWidth(),
     ) {
-        TextField(
-            value = link,
-            onValueChange = {},
-            label = { Text(label) },
-            enabled = true,
-            readOnly = true,
-            singleLine = singleLine,
-            modifier = Modifier
-                .clickable(
-                    onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(link))) }
-                ),
-        )
+        CompositionLocalProvider(
+            // This disables keyboard functionality for this block
+            LocalTextInputService provides null
+        ) {
+            TextField(
+                value = link,
+                onValueChange = {},
+                label = { Text(label) },
+                enabled = true,
+                readOnly = true,
+                singleLine = singleLine,
+                modifier = Modifier
+                    .clickable(
+                        onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(link))) }
+                    ),
+            )
+        }
         Row{
             IconButton(
                 onClick = {
