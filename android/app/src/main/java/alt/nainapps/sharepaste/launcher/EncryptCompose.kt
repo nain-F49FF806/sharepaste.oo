@@ -90,7 +90,7 @@ fun EncryptAndShareUI() {
         }
 
         if (deleteLink.isNotEmpty()) {
-            OutputLinkWithCopyIcon(link = deleteLink, "Early delete link")
+            OutputLinkWithCopyIcon(link = deleteLink, "Early delete link", singleLine = true)
         }
     }
 }
