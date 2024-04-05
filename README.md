@@ -53,7 +53,7 @@ Next we need to init and retrieve the submodule
 
     git submodule update --init 
 
-You will also need [cargo-ndk]() installed to build this library for Android.
+You will also need [cargo-ndk](https://github.com/bbqsrc/cargo-ndk) installed to build this library for Android.
 
     cargo install cargo-ndk
 
@@ -63,10 +63,20 @@ After this you should be able to open the android folder in Android Studio and r
 
 | Location                      | Notes                                                                                        |
 | ----------------------------- | -------------------------------------------------------------------------------------------- |
-| rust/pbcli                    | rust library with uniffi bindings. Implements the privatebin api. Loaded as git submodule     |
+| rust/pbcli                    | rust library with uniffi bindings. Implements the privatebin api. Loaded as git submodule    |
 | android/rsnative              | Module to build rust libraries for android native and to contain their wrapping kotlin code. |
 | android/rsnative/build.gradle | Customizable configuration for above (see `cargoNdk` section)                                |
 | android/app                   | User facing, android app features                                                            |
+
+### Build variants / flavors
+
+This app comes in 3 flavors, with only difference being the icons used / theme customization to help tell the source.
+
+|     | flavor                | purpose                                                                                                       |
+| --- | --------------------- | ------------------------------------------------------------------------------------------------------------- |
+| 1   | **ambient** (default) | You should use this for local builds or redistribution. You may replace the icon, but not adapt or modify it. |
+| 2   | **fdroid**            | This flavor is for official f-droid distribution.                                                              |
+| 3   | **original**          | This is for builds from the original source repo. you are not granted rights to use media from this flavor.   |
 
 ## Contributing
 

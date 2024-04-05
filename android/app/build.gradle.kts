@@ -76,6 +76,20 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    flavorDimensions += listOf("source")
+    productFlavors {
+        create("source-ambient") {
+            dimension = "source"
+            applicationIdSuffix = ".fork"
+        }
+        create("source-fdroid") {
+            dimension = "source"
+            applicationIdSuffix = ".fdroid"
+        }
+        create("source-original") {
+            dimension = "source"
+        }
+    }
 }
 
 dependencies {
