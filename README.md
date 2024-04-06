@@ -1,12 +1,18 @@
 # Share Paste O2
 
-## Intro
+## Introduction
 
 Share Paste is a [privatebin](https://privatebin.net/) client for android.  
+
+![invite](.github/.assets/screenshots/invite.jpg)
+![process](.github/.assets/screenshots/process.jpg)
+![output](.github/.assets/screenshots/output.jpg)
+![dark](.github/.assets/screenshots/dark.jpg)
+
 This app allows you to quickly share text, in such a way that the hosting privatebin server
-can't read contents of the paste you have shared. Or in other words, your share is end to end encrypted.
-Also you can set your paste to expire and auto destruct after a set duration. Or burn
-on read (mission impossible style) if you like, to prevent unintended persons from accessing it later.
+can't read contents of the paste you have shared. Or in other words, your share is _end to end encrypted_.
+Also you can set your paste to expire and auto destruct 💣 after a set duration. Or burn
+on read 🔥 (Mission Impossible style) if you like, to prevent unintended persons from accessing it later.
 
 **What you might use this for?**
 
