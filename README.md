@@ -1,4 +1,4 @@
-# Share Paste O2
+# Share Paste O₂
 
 ## Introduction
 
@@ -101,7 +101,7 @@ Once Share Paste is aware of attachments, we can start opening (decryption) link
 
 ## Credits
 
-* The [`uniffi-starter`] template by Ian provides the base for Android <=> Rust bridge setup.
+* The [`uniffi-starter`] template by Ian Wagner provides the base for Android <=> Rust bridge setup.
 * [pbcli] developer Mydayyy. Thanks for such enthusiastic, swift and smooth collaboration.
 * Mozilla & community for actively working on their [UniFFI] system and fielding questions.
 * [Phind-34B] provided initial guidance in regard to Compose UI.
