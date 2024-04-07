@@ -1,0 +1,8 @@
+First release!
+
+* Encrypt and share paste
+* Customizable expiry and burn on read
+* Easy clipboard copy with share button
+* Offer early-delete link for emergencies
+* Cool F-droid dedicated icon
+

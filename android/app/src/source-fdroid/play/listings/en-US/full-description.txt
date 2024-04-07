@@ -1,0 +1,12 @@
+This app allows you to quickly share text, in such a way that the hosting server can't read contents of the paste you have shared.
+Or in other words, your share is end to end encrypted. You can also set your paste to auto destruct 💣 after a set duration. 
+Or burn on read 🔥 (Mission Impossible style!) if you like, to prevent unintended persons from accessing it later.
+
+If you know of PrivateBin, this is the first and only mobile client for it that we know of :)
+PrivateBin: https://privatebin.info/
+
+
+Enjoy sharing your pastes privately!
+
+
+Built with love 🫶, Kotlin 🏝️  and Rust 🦀.
