@@ -73,8 +73,8 @@ fun EncryptAndShareUI() {
                 val pb = PrivateBinRs()
                 val opts = pb.getOpts(expire = expiry, burn = burnOnRead)
                 val pbRespose = pb.send(textToEncrypt, opts)
-                shareLink = pbRespose.toUrl(pb.defaultBaseUrl)
-                deleteLink = pbRespose.toDeleteUrl(pb.defaultBaseUrl)
+                shareLink = pbRespose.toPasteUrl()
+                deleteLink = pbRespose.toDeleteUrl()
                 isLoading = false
             }
 
