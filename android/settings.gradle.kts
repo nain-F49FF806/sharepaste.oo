@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SharePaste O2"
+rootProject.name = "SharePaste O₂"
 include(":app")
 include(":rsnative")
