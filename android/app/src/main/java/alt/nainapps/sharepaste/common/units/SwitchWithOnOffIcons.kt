@@ -1,4 +1,4 @@
-package alt.nainapps.sharepaste.launcher.units
+package alt.nainapps.sharepaste.common.units
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

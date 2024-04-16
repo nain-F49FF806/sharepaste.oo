@@ -1,10 +1,10 @@
-package alt.nainapps.sharepaste.launcher
+package alt.nainapps.sharepaste.common
 
 
 import alt.nainapps.sharepase.rsnative.PrivateBinRs
-import alt.nainapps.sharepaste.launcher.units.OptionMenu
-import alt.nainapps.sharepaste.launcher.units.OutputLinkWithCopyIcon
-import alt.nainapps.sharepaste.launcher.units.SwithWithOnOffIcons
+import alt.nainapps.sharepaste.common.units.OptionMenu
+import alt.nainapps.sharepaste.common.units.OutputLinkWithCopyIcon
+import alt.nainapps.sharepaste.common.units.SwithWithOnOffIcons
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll

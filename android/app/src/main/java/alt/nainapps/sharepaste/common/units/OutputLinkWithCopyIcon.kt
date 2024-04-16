@@ -1,4 +1,4 @@
-package alt.nainapps.sharepaste.launcher.units
+package alt.nainapps.sharepaste.common.units
 
 import android.content.ClipData
 import android.content.ClipboardManager

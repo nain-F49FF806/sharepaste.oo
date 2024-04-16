@@ -1,5 +1,6 @@
 package alt.nainapps.sharepaste.launcher
 
+import alt.nainapps.sharepaste.common.EncryptAndShareUI
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
