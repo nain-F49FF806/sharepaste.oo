@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Share Paste O2</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_share_text">Encrypt&amp;Share</string>
 </resources>
