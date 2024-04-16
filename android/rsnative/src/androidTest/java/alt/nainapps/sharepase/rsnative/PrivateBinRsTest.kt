@@ -9,7 +9,7 @@ class PrivateBinRsTest {
         val text = "hello"
         val postPasteResponse = PrivateBinRs().send(text)
         Assert.assertEquals(postPasteResponse.isSuccess(), true)
-        println(postPasteResponse.toUrl("https://privatebin.net"))
+        println(postPasteResponse.toPasteUrl())
     }
 
     @Test
@@ -28,7 +28,7 @@ class PrivateBinRsTest {
         val postPasteResponse = pb.send(text)
         Assert.assertEquals(postPasteResponse.isSuccess(), true)
 
-        val pasteUrl = postPasteResponse.toUrl(pb.defaultBaseUrl)
+        val pasteUrl = postPasteResponse.toPasteUrl()
         println(pasteUrl)
 
         val pb2 = PrivateBinRs()
@@ -45,6 +45,6 @@ class PrivateBinRsTest {
         val opts = pb.getOpts(expire = expire)
         val postPasteResponse = pb.send(text, opts)
         Assert.assertEquals(postPasteResponse.isSuccess(), true)
-        println(postPasteResponse.toUrl(pb.defaultBaseUrl))
+        println(postPasteResponse.toPasteUrl())
     }
 }
