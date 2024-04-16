@@ -23,8 +23,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @Composable
-fun EncryptAndShareUI() {
-    var textToEncrypt by rememberSaveable { mutableStateOf("") }
+fun EncryptAndShareUI(text: String = "") {
+    var textToEncrypt by rememberSaveable { mutableStateOf(text) }
     var expiry by rememberSaveable { mutableStateOf("1day") }
     var burnOnRead by rememberSaveable { mutableStateOf(false) }
     var shareLink by rememberSaveable { mutableStateOf("") }
