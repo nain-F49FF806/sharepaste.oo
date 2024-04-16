@@ -93,7 +93,7 @@ unless you explicitly make additional grants.
 
 Some ideas / Current to do:
 
-* Receive text share intents, so we can encrypt the shared text
+* ~~Receive text share intents, so we can encrypt the shared text~~ [[done](https://github.com/nain-F49FF806/sharepaste.oo/commit/1830278f96e2c414f7b7f2355b6ef0442f909950)]
 * Receive arbitrary file share intents, so we can  encrypt as attachment
 * Keep a record of shared links (configurable), and their expiry date/time
 
