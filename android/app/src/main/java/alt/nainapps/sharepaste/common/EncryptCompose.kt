@@ -1,7 +1,7 @@
 package alt.nainapps.sharepaste.common
 
 
-import alt.nainapps.sharepase.rsnative.PrivateBinRs
+import alt.nainapps.sharepaste.rsnative.PrivateBinRs
 import alt.nainapps.sharepaste.common.units.OptionMenu
 import alt.nainapps.sharepaste.common.units.OutputLinkWithCopyIcon
 import alt.nainapps.sharepaste.common.units.SwithWithOnOffIcons

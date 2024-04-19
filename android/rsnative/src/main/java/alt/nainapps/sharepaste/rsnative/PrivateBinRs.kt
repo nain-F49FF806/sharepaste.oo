@@ -1,4 +1,4 @@
-package alt.nainapps.sharepase.rsnative
+package alt.nainapps.sharepaste.rsnative
 
 import uniffi.pbcli.Api
 import uniffi.pbcli.DecryptedPaste

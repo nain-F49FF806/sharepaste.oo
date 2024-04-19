@@ -1,4 +1,4 @@
-package alt.nainapps.sharepase.rsnative
+package alt.nainapps.sharepaste.rsnative
 
 import org.junit.Test
 
