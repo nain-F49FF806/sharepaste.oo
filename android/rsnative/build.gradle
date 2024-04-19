@@ -28,6 +28,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    ndkVersion '26.2.11394342'
 }
 
 dependencies {
@@ -67,6 +68,9 @@ android.libraryVariants.all { variant ->
                     '--out-dir', project.file("${buildDir}/generated/source/uniffi/${variant.name}/java")
 
             dependsOn "buildCargoNdk${variant.name.capitalize()}"
+
+            // Specify inputs for task. Should help avoid regenerating bindings if nothing changed.
+            inputs.dir(project.file("./src/main/jniLibs/arm64-v8a/"))
         }
 
         variant.javaCompileProvider.get().dependsOn(generateBindings)
