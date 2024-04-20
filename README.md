@@ -50,6 +50,8 @@ This app is powered by Kotlin 🏝️ and Rust 🦀.
 
 ### How to build
 
+#### Source the code
+
 This project sources the pbcli library dependency as a git submodule.
 Assuming you have already cloned this repository like so.
 
@@ -59,9 +61,21 @@ Next we need to init and retrieve the submodule
 
     git submodule update --init 
 
+#### Rust the environment
+
 You will also need [cargo-ndk](https://github.com/bbqsrc/cargo-ndk) installed to build this library for Android.
 
     cargo install cargo-ndk
+    rustup target add aarch64-linux-android armv7-linux-androideabi
+
+#### Android the Studio
+
+After above you should be able to open the `android` folder in Android Studio, and build in a few steps
+
+* Open sdk manager and [install a recent / recommennded NDK](https://developer.android.com/studio/projects/install-ndk)
+* Open Build Variants tool window, and for app module select flavor you want (default source-ambientRelease is safe bet)
+* `Build` menu > `Build Bundle(s) / APK(s)` > `Build Apk`
+
 
 After this you should be able to open the android folder in Android Studio and run build.
 
