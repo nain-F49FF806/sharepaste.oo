@@ -76,8 +76,7 @@ After above you should be able to open the `android` folder in Android Studio, a
 * Open Build Variants tool window, and for app module select flavor you want (default source-ambientRelease is safe bet)
 * `Build` menu > `Build Bundle(s) / APK(s)` > `Build Apk`
 
-
-After this you should be able to open the android folder in Android Studio and run build.
+Voila! If you do have trouble, please [open an issue](https://github.com/nain-F49FF806/sharepaste.oo/issues).
 
 ### Project structure
 
