@@ -27,7 +27,7 @@ on read 🔥 (Mission Impossible style) if you like, to prevent unintended perso
 
 Please see [releases](https://github.com/nain-F49FF806/sharepaste.oo/releases).
 
-F-droid packaging request is [ongoing](https://gitlab.com/fdroid/rfp/-/issues/2723). (*Coming soon*).  
+F-droid packaging request is [ongoing](https://gitlab.com/fdroid/rfp/-/issues/2723). (*Coming soon*). 
 
 ## How it works?
 
@@ -61,9 +61,13 @@ Next we need to init and retrieve the submodule
 
     git submodule update --init 
 
+(Optionally) Enable app version auto increment on new commit.
+
+    ln -s ../../.githooks/pre-commit .git/hooks/
+
 #### Rust the environment
 
-You will also need [cargo-ndk](https://github.com/bbqsrc/cargo-ndk) installed to build this library for Android.
+You will need [cargo-ndk](https://github.com/bbqsrc/cargo-ndk) installed to build this library for Android.
 
     cargo install cargo-ndk
     rustup target add aarch64-linux-android armv7-linux-androideabi

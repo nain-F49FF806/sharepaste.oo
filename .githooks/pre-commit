@@ -25,7 +25,7 @@ getCurrentDateVersionName() {
 
 # Check if SKIP_VERSION_AUTO_UPDATE is set
 if [ "$SKIP_VERSION_AUTO_UPDATE" = "true" ]; then
-    echo "Skipping automatic version update."
+    echo "Skipping automatic android app version update."
     exit 0
 else
     echo "Incrementing android app version pre-commit."
