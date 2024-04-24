@@ -8,25 +8,6 @@ plugins {
     kotlin("plugin.serialization")
 }
 
-/**
- * Use unix timestamp, precise to 1000 seconds (~16.7 mins) as versionCode.
- * This lets us later generate manual updates to a versionCode epoch if needed.
- * Note: This scheme will remain valid for use in Google Play up to value 2100000000,
- * or about year 2036 .
- */
-fun getCurrentTimeEpochVersionCode(): Int {
-    val seconds = (System.currentTimeMillis() / 1000)
-    val epoch = (seconds/1000).toInt()
-    return epoch * 1000
-}
-
-fun getCurrentDateVersionName(): String {
-    val currentDate = LocalDate.now()
-    val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
-    return currentDate.format(formatter)
-}
-
-
 android {
     namespace = "alt.nainapps.sharepaste"
     compileSdk = 34
@@ -35,8 +16,8 @@ android {
         applicationId = "alt.nainapps.sharepaste"
         minSdk = 26
         targetSdk = 34
-        versionCode = getCurrentTimeEpochVersionCode()
-        versionName = getCurrentDateVersionName()
+        versionCode = 1713953000
+        versionName = "2024.04.24"
 //        archivesName = "${rootProject.name}-${versionCode}-${versionName}"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
