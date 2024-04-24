@@ -16,7 +16,7 @@ android {
         applicationId = "alt.nainapps.sharepaste"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1713955000
+        versionCode = 1713961000
         versionName = "2024.04.24"
 //        archivesName = "${rootProject.name}-${versionCode}-${versionName}"
 
@@ -72,6 +72,7 @@ android {
             dimension = "source"
         }
     }
+    ndkVersion = "26.2.11394342"
 }
 
 dependencies {
