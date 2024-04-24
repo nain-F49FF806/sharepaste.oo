@@ -27,7 +27,7 @@ on read 🔥 (Mission Impossible style) if you like, to prevent unintended perso
 
 Please see [releases](https://github.com/nain-F49FF806/sharepaste.oo/releases).
 
-F-droid packaging is intended. Assistance towards this goal is appreciated.  
+F-droid packaging request is [ongoing](https://gitlab.com/fdroid/rfp/-/issues/2723). (*Coming soon*).  
 
 ## How it works?
 
