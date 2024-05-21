@@ -47,6 +47,7 @@ cargoNdk {
     module  = "../rust"  // Directory containing Cargo.toml
     librariesNames = ["libfoobar.so", "libpbcli.so"]
     targets = ["arm64", "arm"]
+    verbose = true
 
 }
 
