@@ -71,7 +71,7 @@ Next we need to init and retrieve the submodule
 
 You will need [cargo-ndk](https://github.com/bbqsrc/cargo-ndk) installed to build this library for Android.
 
-    cargo install cargo-ndk
+    cargo install cargo-ndk@3.5.4 --locked
     rustup target add aarch64-linux-android armv7-linux-androideabi
 
 #### Android the Studio
