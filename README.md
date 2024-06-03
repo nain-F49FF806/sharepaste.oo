@@ -25,9 +25,11 @@ on read 🔥 (Mission Impossible style) if you like, to prevent unintended perso
 
 ### Where to get it?
 
-Please see [releases](https://github.com/nain-F49FF806/sharepaste.oo/releases).
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+    alt="Get it on F-Droid"
+    height="80">](https://f-droid.org/packages/alt.nainapps.sharepaste.fdroid/)
 
-F-droid packaging request is [ongoing](https://gitlab.com/fdroid/rfp/-/issues/2723). (*Coming soon*). 
+You can also download apk directly from GitHub. Please see [releases](https://github.com/nain-F49FF806/sharepaste.oo/releases).
 
 ## How it works?
 
