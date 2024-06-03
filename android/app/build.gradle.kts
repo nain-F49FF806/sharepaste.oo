@@ -16,8 +16,8 @@ android {
         applicationId = "alt.nainapps.sharepaste"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1716312000
-        versionName = "2024.05.21"
+        versionCode = 1717441000
+        versionName = "2024.06.03"
 //        archivesName = "${rootProject.name}-${versionCode}-${versionName}"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
