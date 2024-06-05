@@ -1,4 +1,10 @@
-First release!
+## 2024.06.05
+
+* Update dependencies
+* Improve f-droid listing
+* Dev documentation update
+
+## First release!
 
 * Encrypt and share paste
 * Customizable expiry and burn on read
