@@ -1,7 +1,3 @@
-import org.jetbrains.kotlin.gradle.plugin.mpp.pm20.util.archivesName
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -16,8 +12,8 @@ android {
         applicationId = "alt.nainapps.sharepaste"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1717596000
-        versionName = "2024.06.05"
+        versionCode = 1718815000
+        versionName = "2024.06.19"
 //        archivesName = "${rootProject.name}-${versionCode}-${versionName}"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
