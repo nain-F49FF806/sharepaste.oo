@@ -1,11 +1,17 @@
 package alt.nainapps.sharepaste.common
 
-
-import alt.nainapps.sharepaste.rsnative.PrivateBinRs
 import alt.nainapps.sharepaste.common.units.OptionMenu
 import alt.nainapps.sharepaste.common.units.OutputLinkWithCopyIcon
 import alt.nainapps.sharepaste.common.units.SwithWithOnOffIcons
-import androidx.compose.foundation.layout.*
+import alt.nainapps.sharepaste.rsnative.PrivateBinRs
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
@@ -13,8 +19,12 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,12 +43,13 @@ fun EncryptAndShareUI(text: String = "") {
     val coroutineScope = rememberCoroutineScope()
 
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-            .verticalScroll(rememberScrollState()),
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .padding(16.dp)
+                .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         OutlinedTextField(
             value = textToEncrypt,
@@ -46,7 +57,7 @@ fun EncryptAndShareUI(text: String = "") {
             label = { Text("Text to encrypt and share") },
             modifier = Modifier.fillMaxWidth(),
             singleLine = false,
-            minLines = 3
+            minLines = 3,
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -54,7 +65,7 @@ fun EncryptAndShareUI(text: String = "") {
         OptionMenu(
             label = "expiry",
             options = listOf("5min", "1hour", "1day", "1week", "1month"),
-            defaultOption = expiry
+            defaultOption = expiry,
         ) {
             expiry = it
             println("expiry = $expiry")
@@ -77,12 +88,11 @@ fun EncryptAndShareUI(text: String = "") {
                 deleteLink = pbRespose.toDeleteUrl()
                 isLoading = false
             }
-
         }) {
             if (isLoading) {
                 CircularProgressIndicator(
                     Modifier.size(24.dp),
-                    color = MaterialTheme.colorScheme.onPrimary
+                    color = MaterialTheme.colorScheme.onPrimary,
                 )
             } else {
                 Text("Encrypt & Share")
@@ -100,7 +110,6 @@ fun EncryptAndShareUI(text: String = "") {
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable

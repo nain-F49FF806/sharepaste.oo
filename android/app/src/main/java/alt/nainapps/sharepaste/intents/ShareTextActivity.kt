@@ -1,6 +1,8 @@
 package alt.nainapps.sharepaste.intents
 
 import alt.nainapps.sharepaste.common.EncryptAndShareUI
+import alt.nainapps.sharepaste.intents.ui.theme.SharePasteO2Theme
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -11,8 +13,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import alt.nainapps.sharepaste.intents.ui.theme.SharePasteO2Theme
-import android.content.Intent
 
 class ShareTextActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +22,7 @@ class ShareTextActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = MaterialTheme.colorScheme.background,
                 ) {
                     EncryptAndShareUI(intent?.getStringExtra(Intent.EXTRA_TEXT).orEmpty())
                 }
@@ -32,10 +32,13 @@ class ShareTextActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting(
+    name: String,
+    modifier: Modifier = Modifier,
+) {
     Text(
         text = "Hello $name!",
-        modifier = modifier
+        modifier = modifier,
     )
 }
 
