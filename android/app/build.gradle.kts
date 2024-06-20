@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     kotlin("plugin.serialization")
+    alias(libs.plugins.composeCompiler)
 }
 
 android {
@@ -12,7 +13,7 @@ android {
         applicationId = "alt.nainapps.sharepaste"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1718890000
+        versionCode = 1718893000
         versionName = "2024.06.20"
 //        archivesName = "${rootProject.name}-${versionCode}-${versionName}"
 
