@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background,
+                    color = MaterialTheme.colorScheme.background
                 ) {
                     EncryptAndShareUI()
                 }
@@ -31,19 +31,16 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting2(
-    name: String,
-    modifier: Modifier = Modifier,
-) {
+fun Greeting2(name: String, modifier: Modifier = Modifier) {
     Text(
         text = "Hello $name!",
-        modifier = modifier,
+        modifier = modifier
     )
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview2() {
+private fun GreetingPreview2() {
     SharePasteO2Theme {
         Greeting2("Android")
     }

@@ -44,12 +44,12 @@ fun EncryptAndShareUI(text: String = "") {
 
     Column(
         modifier =
-            Modifier
-                .fillMaxSize()
-                .padding(16.dp)
-                .verticalScroll(rememberScrollState()),
+        Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         OutlinedTextField(
             value = textToEncrypt,
@@ -57,7 +57,7 @@ fun EncryptAndShareUI(text: String = "") {
             label = { Text("Text to encrypt and share") },
             modifier = Modifier.fillMaxWidth(),
             singleLine = false,
-            minLines = 3,
+            minLines = 3
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -65,7 +65,7 @@ fun EncryptAndShareUI(text: String = "") {
         OptionMenu(
             label = "expiry",
             options = listOf("5min", "1hour", "1day", "1week", "1month"),
-            defaultOption = expiry,
+            defaultOption = expiry
         ) {
             expiry = it
             println("expiry = $expiry")
@@ -92,7 +92,7 @@ fun EncryptAndShareUI(text: String = "") {
             if (isLoading) {
                 CircularProgressIndicator(
                     Modifier.size(24.dp),
-                    color = MaterialTheme.colorScheme.onPrimary,
+                    color = MaterialTheme.colorScheme.onPrimary
                 )
             } else {
                 Text("Encrypt & Share")
@@ -113,6 +113,6 @@ fun EncryptAndShareUI(text: String = "") {
 
 @Preview(showBackground = true)
 @Composable
-fun EncryptAndShareUIPreview() {
+private fun EncryptAndShareUIPreview() {
     EncryptAndShareUI()
 }
