@@ -1,24 +1,22 @@
 package alt.nainapps.sharepaste.rsnative
 
+import java.net.URL
 import uniffi.pbcli.Api
 import uniffi.pbcli.DecryptedPaste
 import uniffi.pbcli.Opts
 import uniffi.pbcli.PasteFormat
 import uniffi.pbcli.PostPasteResponse
 import uniffi.pbcli.Url
-import java.net.URL
 
-class PrivateBinRs(val defaultBaseUrl: String = "https://privatebin.net") {
-    val defaultOpts = getOpts()
+class PrivateBinRs(private val defaultBaseUrl: String = "https://privatebin.net") {
+    private val defaultOpts = getOpts()
 
-    fun getOpts(url: Url? = null, expire: String? = null, burn: Boolean? = null): Opts {
-        return Opts(
-            url = url ?: defaultBaseUrl,
-            format = PasteFormat.PLAINTEXT,
-            expire = expire ?: "5min",
-            burn =  burn ?: false,
-        )
-    }
+    fun getOpts(url: Url? = null, expire: String? = null, burn: Boolean? = null): Opts = Opts(
+        url = url ?: defaultBaseUrl,
+        format = PasteFormat.PLAINTEXT,
+        expire = expire ?: "5min",
+        burn = burn ?: false
+    )
 
     fun send(text: String, opts: Opts = defaultOpts): PostPasteResponse {
         val decryptedPaste = DecryptedPaste(text, null, null)

@@ -83,9 +83,9 @@ fun EncryptAndShareUI(text: String = "") {
             coroutineScope.launch(Dispatchers.IO) {
                 val pb = PrivateBinRs()
                 val opts = pb.getOpts(expire = expiry, burn = burnOnRead)
-                val pbRespose = pb.send(textToEncrypt, opts)
-                shareLink = pbRespose.toPasteUrl()
-                deleteLink = pbRespose.toDeleteUrl()
+                val pbResponse = pb.send(textToEncrypt, opts)
+                shareLink = pbResponse.toPasteUrl()
+                deleteLink = pbResponse.toDeleteUrl()
                 isLoading = false
             }
         }) {
