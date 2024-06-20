@@ -1,3 +1,9 @@
+## 2024.06.20
+
+* Update dependencies
+* Ktlint config, code formatting
+* Split apk by abi ~ should result in slightly smaller apk sizes
+
 ## 2024.06.05
 
 * Update dependencies

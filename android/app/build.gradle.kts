@@ -13,7 +13,7 @@ android {
         applicationId = "alt.nainapps.sharepaste"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1718900000
+        versionCode = 1718902000
         versionName = "2024.06.20"
 //        archivesName = "${rootProject.name}-${versionCode}-${versionName}"
 
