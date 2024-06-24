@@ -5,8 +5,7 @@
         android:enabled="true"
         android:shortcutShortLabel="@string/title_activity_settings">
         <intent
-            android:action="android.intent.action.VIEW"
-            android:targetPackage="alt.nainapps.sharepaste"
+            android:action="alt.nainapps.sharepaste.SETTINGS"
             android:targetClass="alt.nainapps.sharepaste.settings.SettingsActivity" />
     </shortcut>
     <!-- Specify more shortcuts here. -->
