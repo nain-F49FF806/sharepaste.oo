@@ -13,8 +13,8 @@ android {
         applicationId = "alt.nainapps.sharepaste"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1718903000
-        versionName = "2024.06.20"
+        versionCode = 1719253000
+        versionName = "2024.06.24"
         setProperty("archivesBaseName", "sharepaste.oo")
 //        archivesName = "${rootProject.name}-${versionCode}-${versionName}"
 
@@ -101,6 +101,8 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.org.jetbrains.kotlin.plugin.serialization.gradle.plugin)
+    implementation(libs.composePrefs)
+    implementation(libs.androidx.preference.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

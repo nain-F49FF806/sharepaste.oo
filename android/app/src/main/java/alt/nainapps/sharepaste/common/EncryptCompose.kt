@@ -33,7 +33,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @Composable
-fun EncryptAndShareUI(text: String = "") {
+fun EncryptAndShareUI(text: String = "", customPrivatebinHost: String? = null) {
     var textToEncrypt by rememberSaveable { mutableStateOf(text) }
     var expiry by rememberSaveable { mutableStateOf("1day") }
     var burnOnRead by rememberSaveable { mutableStateOf(false) }
@@ -81,7 +81,7 @@ fun EncryptAndShareUI(text: String = "") {
             // Call your encryption function here
             isLoading = true
             coroutineScope.launch(Dispatchers.IO) {
-                val pb = PrivateBinRs()
+                val pb = PrivateBinRs(defaultBaseUrl = customPrivatebinHost)
                 val opts = pb.getOpts(expire = expiry, burn = burnOnRead)
                 val pbResponse = pb.send(textToEncrypt, opts)
                 shareLink = pbResponse.toPasteUrl()

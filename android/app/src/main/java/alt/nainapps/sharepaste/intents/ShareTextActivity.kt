@@ -12,7 +12,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.preference.PreferenceManager
 
 class ShareTextActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +26,13 @@ class ShareTextActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    EncryptAndShareUI(intent?.getStringExtra(Intent.EXTRA_TEXT).orEmpty())
+                    val preferences = PreferenceManager.getDefaultSharedPreferences(
+                        LocalContext.current
+                    )
+                    EncryptAndShareUI(
+                        text = intent?.getStringExtra(Intent.EXTRA_TEXT).orEmpty(),
+                        customPrivatebinHost = preferences.getString("privatebin_host_url", null)
+                    )
                 }
             }
         }

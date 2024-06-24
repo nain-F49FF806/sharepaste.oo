@@ -13,6 +13,11 @@
         android:theme="@style/Theme.SharePastePrivatebin"
         tools:targetApi="31">
         <activity
+            android:name=".settings.SettingsActivity"
+            android:exported="true"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/Theme.SharePastePrivatebin"/>
+        <activity
             android:name=".intents.ShareTextActivity"
             android:exported="true"
             android:label="@string/title_activity_share_text"
@@ -31,6 +36,8 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
     </application>
 
