@@ -14,7 +14,7 @@ android {
         minSdk = 26
         targetSdk = 34
         versionCode = 1719256000
-        versionName = "2024.06.24"
+        versionName = "2024.07.02"
         setProperty("archivesBaseName", "sharepaste.oo")
 //        archivesName = "${rootProject.name}-${versionCode}-${versionName}"
 

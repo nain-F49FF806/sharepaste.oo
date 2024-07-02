@@ -1,3 +1,7 @@
+## 2024.07.02
+
+* Provide server choice: Set custom Privatebin host server
+
 ## 2024.06.20
 
 * Update dependencies
