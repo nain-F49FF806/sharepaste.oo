@@ -60,7 +60,7 @@ jobs:
     - run: wget -q https://dl.google.com/android/repository/android-ndk-r23c-linux.zip && unzip android-ndk-r23c-linux.zip -d /opt
     - name: gradle cargoNDK plugin needs this file for some reason
       run: touch android/local.properties
-    - run: echo "ndk.dir=/android-ndk-r23c" > android/local.properties
+    - run: echo "ndk.dir=/opt/android-ndk-r23c" > android/local.properties
       
 
     - name: Grant execute permission for gradlew
