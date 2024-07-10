@@ -48,8 +48,14 @@ jobs:
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
         # Run the post step to save the cache even if another step before fail
         save-always: true
-    - run: touch android/local.properties
-      name: gradle cargoNDK plugin needs this for some reason
+
+    - name: Fix ndk version
+      # As of this commit day ANDROID_NDK_LATEST_HOME=/usr/local/lib/android/sdk/ndk/26.3.11579264
+      # We just want the ndk to be v26 for agp 8.5
+      run: echo "ANDROID_NDK_HOME=$ANDROID_NDK_LATEST_HOME" >> "$GITHUB_ENV"
+    - name: gradle cargoNDK plugin needs this file for some reason
+      run: touch android/local.properties
+      
 
     - name: Grant execute permission for gradlew
       working-directory: android/
