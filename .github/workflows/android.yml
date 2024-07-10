@@ -48,6 +48,8 @@ jobs:
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
         # Run the post step to save the cache even if another step before fail
         save-always: true
+    - run: touch android/local.properties
+      name: gradle cargoNDK plugin needs this for some reason
 
     - name: Grant execute permission for gradlew
       working-directory: android/
