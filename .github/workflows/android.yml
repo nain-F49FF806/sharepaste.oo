@@ -11,6 +11,8 @@ on:
     paths:
     - android/**
 
+  workflow_dispatch:
+
 jobs:
   build:
 
