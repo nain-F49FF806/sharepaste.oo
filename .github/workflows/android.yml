@@ -50,8 +50,10 @@ jobs:
         save-always: true
 
     - name: Grant execute permission for gradlew
+      working-directory: android/
       run: chmod +x gradlew
     - name: Build with Gradle
+      working-directory: android/
       run: ./gradlew build
 
     - name: Upload Build Artifacts (unsigned Apks)
