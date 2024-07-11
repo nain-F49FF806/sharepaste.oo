@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    kotlin("plugin.serialization")
+    alias(libs.plugins.jetbrainsKotlinSerialization)
     alias(libs.plugins.composeCompiler)
 }
 
@@ -13,10 +13,9 @@ android {
         applicationId = "alt.nainapps.sharepaste"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1719256000
-        versionName = "2024.07.02"
+        versionCode = 1720687000
+        versionName = "2024.07.11"
         setProperty("archivesBaseName", "sharepaste.oo")
-//        archivesName = "${rootProject.name}-${versionCode}-${versionName}"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -36,6 +35,16 @@ android {
                 // Specify if you don't want to also generate a universal APK that includes all ABIs.
                 isUniversalApk = true
             }
+        }
+    }
+
+    signingConfigs {
+        create("github") {
+            val keystorePath = "/keystore/keystore.jks"
+            storeFile = File(keystorePath)
+            storePassword = System.getenv("SIGNING_STORE_PASSWORD")
+            keyAlias = System.getenv("SIGNING_KEY_ALIAS")
+            keyPassword = System.getenv("SIGNING_KEY_PASSWORD")
         }
     }
 
