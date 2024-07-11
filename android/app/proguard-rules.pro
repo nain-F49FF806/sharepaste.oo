@@ -21,7 +21,7 @@
 #-renamesourcefileattribute SourceFile
 
 -dontwarn org.gradle.api.Plugin
-
+# https://stackoverflow.com/a/14157641
 -keep class uniffi.pbcli.** { *; }
 -keepclasseswithmembernames,includedescriptorclasses class * {
     native <methods>;
