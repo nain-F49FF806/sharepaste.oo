@@ -5,11 +5,13 @@ on:
     branches: [ "main" ]
     paths:
     - android/**
+    - .github/workflowa
     
   pull_request:
     branches: [ "main" ]
     paths:
     - android/**
+    - .github/workflowa
 
   release:
     types: ["published"]
