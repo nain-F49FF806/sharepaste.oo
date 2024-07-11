@@ -71,7 +71,7 @@ jobs:
           TMP_DIR: ${{ runner.temp }}
       run: |
           SIGNING_STORE_FILE_PATH="${TMP_DIR}/keystore.jks"
-          echo ${SIGNING_STORE_BASE64} | base64 -d > ${SIGNING_STORE_FILE_PATH}
+          echo ${SIGNING_STORE_BASE64} | base64 -di > ${SIGNING_STORE_FILE_PATH}
 
     - name: Change gradle signing config to github release
       if:   ${{ (github.event_name == 'release') }}
