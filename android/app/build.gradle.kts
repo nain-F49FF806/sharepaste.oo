@@ -13,7 +13,7 @@ android {
         applicationId = "alt.nainapps.sharepaste"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1720687000
+        versionCode = 1720700000
         versionName = "2024.07.11"
         setProperty("archivesBaseName", "sharepaste.oo")
 
@@ -40,8 +40,7 @@ android {
 
     signingConfigs {
         create("github") {
-            val keystorePath = "/keystore/keystore.jks"
-            storeFile = File(keystorePath)
+            storeFile = file(System.getenv("SIGNING_STORE_FILE_PATH") ?: "keystore.jks")
             storePassword = System.getenv("SIGNING_STORE_PASSWORD")
             keyAlias = System.getenv("SIGNING_KEY_ALIAS")
             keyPassword = System.getenv("SIGNING_KEY_PASSWORD")

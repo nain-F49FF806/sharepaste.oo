@@ -6,7 +6,7 @@ on:
     paths:
     - android/**
     - .github/workflows/*
-    
+
   pull_request:
     branches: [ "main" ]
     paths:
@@ -26,7 +26,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: source submodules
-      run: git submodule update --init 
+      run: git submodule update --init
 
     - name: set up JDK 17
       uses: actions/setup-java@v3
@@ -68,10 +68,10 @@ jobs:
       if:   ${{ (github.event_name == 'release') }}
       env:
           SIGNING_STORE_BASE64: ${{ secrets.SIGNING_STORE_BASE64 }}
+          TMP_DIR: ${{ runner.temp }}
       run: |
-          KEYSTORE_DIR="/keystore/"
-          mkdir -p "${KEYSTORE_DIR}"
-          echo ${SIGNING_STORE_BASE64} | base64 -d > "${KEYSTORE_DIR}"/keystore.jks
+          SIGNING_STORE_FILE_PATH="${TMP_DIR}/keystore.jks"
+          echo ${SIGNING_STORE_BASE64} | base64 -d > ${SIGNING_STORE_FILE_PATH}
 
     - name: Change gradle signing config to github release
       if:   ${{ (github.event_name == 'release') }}
@@ -83,6 +83,7 @@ jobs:
       working-directory: android/
       run: ./gradlew build assembleSource-originalRelease
       env:
+        SIGNING_STORE_FILE_PATH: ${{ runner.temp }}/keystore.jks
         SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
         SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
         SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
