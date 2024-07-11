@@ -88,7 +88,7 @@ jobs:
         SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
         SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
     
-    - name: Upload apk to release assets
+    - name: Upload apks to release assets
       if: ${{ (github.event_name == 'release') }}
       run: |
         curl --fail -L \
@@ -97,29 +97,23 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.RELEASE_UPLOAD_PAT }}" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             -H "Content-Type: application/octet-stream" \
-            "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ github.event.release.id }}/assets?name=sharepaste.oo-source-original-arm64-v8a-release.apk" \
+            "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ github.event.release.id }}/assets?name=sharepaste.oo-source-original-arm64-v8a-release.unstrippedlibs.apk" \
             --data-binary "@android/app/build/outputs/apk/source-original/release/sharepaste.oo-source-original-arm64-v8a-release.apk"
-    - name: Upload apk to release assets
-      if: ${{ (github.event_name == 'release') }}
-      run: |
         curl -L \
             -X POST \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{ secrets.RELEASE_UPLOAD_PAT }}" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             -H "Content-Type: application/octet-stream" \
-            "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ github.event.release.id }}/assets?name=sharepaste.oo-source-original-armeabi-v7a-release.apk" \
+            "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ github.event.release.id }}/assets?name=sharepaste.oo-source-original-armeabi-v7a-release.unstrippedlibs.apk" \
             --data-binary "@android/app/build/outputs/apk/source-original/release/sharepaste.oo-source-original-armeabi-v7a-release.apk"
-    - name: Upload apk to release assets
-      if: ${{ (github.event_name == 'release') }}
-      run: |
         curl -L \
             -X POST \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{ secrets.RELEASE_UPLOAD_PAT }}" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             -H "Content-Type: application/octet-stream" \
-            "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ github.event.release.id }}/assets?name=sharepaste.oo-source-original-universal-release.apk" \
+            "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ github.event.release.id }}/assets?name=sharepaste.oo-source-original-universal-release.unstrippedlibs.apk" \
             --data-binary "@android/app/build/outputs/apk/source-original/release/sharepaste.oo-source-original-universal-release.apk"
 
     - name: Upload Build Artifacts (Apks)
