@@ -58,12 +58,12 @@ jobs:
       working-directory: android/
       run: chmod +x gradlew
     - name: Build with Gradle
-      if: ${{ !(github.event_name == "release") }}
+      if: ${{ !(github.event_name == 'release') }}
       working-directory: android/
       run: ./gradlew build
 
     - name: Decode and write Keystore
-      if:   ${{ (github.event_name == "release") }}
+      if:   ${{ (github.event_name == 'release') }}
       env:
           SIGNING_STORE_BASE64: ${{ secrets.SIGNING_STORE_BASE64 }}
       run: |
@@ -72,12 +72,12 @@ jobs:
           echo ${SIGNING_STORE_BASE64} | base64 -d > "${KEYSTORE_DIR}"/keystore.jks
 
     - name: Change gradle signing config to github release
-      if:   ${{ (github.event_name == "release") }}
+      if:   ${{ (github.event_name == 'release') }}
       run: |
           sed -i 's/signingConfigs.getByName("debug")/signingConfigs.getByName("github")/g' android/app/build.gradle.kts
 
     - name: Build with Gradle for release
-      if: ${{ (github.event_name == "release") }}
+      if: ${{ (github.event_name == 'release') }}
       working-directory: android/
       run: ./gradlew build assembleSource-originalRelease
       env:
@@ -86,26 +86,26 @@ jobs:
         SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
     
     - uses: Shopify/upload-to-release@v1
-      if: ${{ (github.event_name == "release") }}
+      if: ${{ (github.event_name == 'release') }}
       with:
         name:  sharepaste.oo-source-original-arm64-v8a-release.apk
         path: android/app/build/outputs/apk/source-original/release/sharepaste.oo-source-original-arm64-v8a-release.apk
         repo-token: ${{ secrets.GITHUB_TOKEN }}
     - uses: Shopify/upload-to-release@v1
-      if: ${{ (github.event_name == "release") }}
+      if: ${{ (github.event_name == 'release') }}
       with:
         name:  sharepaste.oo-source-original-armeabi-v7a-release.apk
         path: android/app/build/outputs/apk/source-original/release/sharepaste.oo-source-original-armeabi-v7a-release.apk
         repo-token: ${{ secrets.GITHUB_TOKEN }}
     - uses: Shopify/upload-to-release@v1
-      if: ${{ (github.event_name == "release") }}
+      if: ${{ (github.event_name == 'release') }}
       with:
         name:  sharepaste.oo-source-original-universal-release.apk
         path: android/app/build/outputs/apk/source-original/release/sharepaste.oo-source-original-universal-release.apk
         repo-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Upload Build Artifacts (Apks)
-      if: ${{ !(github.event_name == "release") }}
+      if: ${{ !(github.event_name == 'release') }}
       uses: actions/upload-artifact@v4.3.4
       with:
         # Artifact name
