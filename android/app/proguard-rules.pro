@@ -26,6 +26,7 @@
 -keepclasseswithmembernames,includedescriptorclasses class * {
     native <methods>;
 }
+# https://stackoverflow.com/a/64553038
 -keep class com.sun.jna.** { *; }
 -keep class * implements com.sun.jna.** { *; }
 # These auto recommended rules are related to above
