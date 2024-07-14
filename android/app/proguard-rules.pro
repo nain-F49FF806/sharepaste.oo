@@ -21,3 +21,21 @@
 #-renamesourcefileattribute SourceFile
 
 -dontwarn org.gradle.api.Plugin
+# https://stackoverflow.com/a/14157641
+-keep class uniffi.pbcli.** { *; }
+-keepclasseswithmembernames,includedescriptorclasses class * {
+    native <methods>;
+}
+# https://stackoverflow.com/a/64553038
+-keep class com.sun.jna.** { *; }
+-keep class * implements com.sun.jna.** { *; }
+# These auto recommended rules are related to above
+# Please add these rules to your existing keep rules in order to suppress warnings.
+# This is generated automatically by the Android Gradle plugin.
+-dontwarn java.awt.Component
+-dontwarn java.awt.GraphicsEnvironment
+-dontwarn java.awt.HeadlessException
+-dontwarn java.awt.Window
+
+# I don't want to obfuscte code, just trim
+-dontobfuscate
