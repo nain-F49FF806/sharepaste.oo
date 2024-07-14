@@ -1,6 +1,11 @@
+## 2024.07.14
+
+* Smaller apks thanks to tamed proguard code trimming.
+
 ## 2024.07.02
 
 * Provide server choice: Set custom Privatebin host server
+  - Long press on app icon for settings shortcut
 
 ## 2024.06.20
 
