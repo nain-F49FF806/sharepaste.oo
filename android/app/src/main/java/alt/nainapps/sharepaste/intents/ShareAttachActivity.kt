@@ -2,6 +2,8 @@ package alt.nainapps.sharepaste.intents
 
 import alt.nainapps.sharepaste.common.EncryptAndShareUI
 import alt.nainapps.sharepaste.intents.ui.theme.SharePasteO2Theme
+import alt.nainapps.sharepaste.utils.bytesToHumanReadableSize
+import alt.nainapps.sharepaste.utils.inputStreamToBase64String
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -27,11 +29,6 @@ import androidx.compose.ui.unit.dp
 import androidx.preference.PreferenceManager
 import java.io.FileNotFoundException
 import java.io.IOException
-import java.io.InputStream
-import kotlin.io.encoding.Base64
-import kotlin.io.encoding.ExperimentalEncodingApi
-
-const val TAG = "ShareAttachActivity"
 
 class ShareAttachActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +36,8 @@ class ShareAttachActivity : ComponentActivity() {
         assert(intent?.action == Intent.ACTION_SEND) {
             "This activity is expected to be intent filtered to Intent.ACTION_SEND"
         }
+        @Suppress("ktlint:standard:property-naming")
+        val TAG = "ShareAttachActivity"
         var attach: String? = null
         var attachName: String? = null
         var attachSize: String? = "unknown size"
@@ -125,22 +124,6 @@ class ShareAttachActivity : ComponentActivity() {
             }
         }
     }
-}
-
-// https://stackoverflow.com/a/68822715
-fun bytesToHumanReadableSize(bytes: Long) = when {
-    bytes >= 1 shl 30 -> "%.1f GB".format(bytes.toDouble() / (1 shl 30))
-    bytes >= 1 shl 20 -> "%.1f MB".format(bytes.toDouble() / (1 shl 20))
-    bytes >= 1 shl 10 -> "%.0f kB".format(bytes.toDouble() / (1 shl 10))
-    else -> "$bytes bytes"
-}
-
-@OptIn(ExperimentalEncodingApi::class)
-fun inputStreamToBase64String(inputStream: InputStream): String? = try {
-    Base64.encode(inputStream.readBytes())
-} catch (e: Exception) {
-    Log.e(TAG, "Encoding Base64 Error: ${e.message}")
-    null // Handle exception appropriately
 }
 
 @Composable
