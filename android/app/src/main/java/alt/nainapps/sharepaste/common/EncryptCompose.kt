@@ -31,12 +31,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import uniffi.pbcli.PasteFormat
 
 @Composable
-fun EncryptAndShareUI(text: String = "", customPrivatebinHost: String? = null) {
+fun EncryptAndShareUI(
+    text: String = "",
+    textFormat: PasteFormat? = null,
+    customPrivatebinHost: String? = null
+) {
     var textToEncrypt by rememberSaveable { mutableStateOf(text) }
+    val textFormat by rememberSaveable { mutableStateOf(textFormat) }
     var expiry by rememberSaveable { mutableStateOf("1day") }
     var burnOnRead by rememberSaveable { mutableStateOf(false) }
+    val customPrivatebinHost by rememberSaveable { mutableStateOf(customPrivatebinHost) }
     var shareLink by rememberSaveable { mutableStateOf("") }
     var deleteLink by rememberSaveable { mutableStateOf("") }
     var isLoading by rememberSaveable { mutableStateOf(false) }
@@ -82,7 +89,7 @@ fun EncryptAndShareUI(text: String = "", customPrivatebinHost: String? = null) {
             isLoading = true
             coroutineScope.launch(Dispatchers.IO) {
                 val pb = PrivateBinRs(defaultBaseUrl = customPrivatebinHost)
-                val opts = pb.getOpts(expire = expiry, burn = burnOnRead)
+                val opts = pb.getOpts(format = textFormat, expire = expiry, burn = burnOnRead)
                 val pbResponse = pb.send(textToEncrypt, opts)
                 shareLink = pbResponse.toPasteUrl()
                 deleteLink = pbResponse.toDeleteUrl()

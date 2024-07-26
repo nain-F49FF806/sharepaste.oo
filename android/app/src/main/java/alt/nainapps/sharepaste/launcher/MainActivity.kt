@@ -11,13 +11,16 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.preference.PreferenceManager
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val customPrivatebinHost = PreferenceManager.getDefaultSharedPreferences(
+            this
+        ).getString("privatebin_host_url", null)
+
         setContent {
             SharePasteO2Theme {
                 // A surface container using the 'background' color from the theme
@@ -25,11 +28,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val preferences = PreferenceManager.getDefaultSharedPreferences(
-                        LocalContext.current
-                    )
                     EncryptAndShareUI(
-                        customPrivatebinHost = preferences.getString("privatebin_host_url", null)
+                        customPrivatebinHost = customPrivatebinHost
                     )
                 }
             }

@@ -11,9 +11,14 @@ import uniffi.pbcli.Url
 class PrivateBinRs(private val defaultBaseUrl: String? = null) {
     private val defaultOpts = getOpts()
 
-    fun getOpts(url: Url? = null, expire: String? = null, burn: Boolean? = null): Opts = Opts(
+    fun getOpts(
+        url: Url? = null,
+        format: PasteFormat? = null,
+        expire: String? = null,
+        burn: Boolean? = null
+    ): Opts = Opts(
         url = url ?: defaultBaseUrl ?: "https://privatebin.net",
-        format = PasteFormat.PLAINTEXT,
+        format = format ?: PasteFormat.PLAINTEXT,
         expire = expire ?: "5min",
         burn = burn ?: false
     )
