@@ -1,3 +1,9 @@
+## 2024.07.26
+
+* Support sharing text files (plain/markdown/code) as pastes
+* Automagically detect and set paste format as per filetype
+* Support sharing a media file as paste attachment
+
 ## 2024.07.14
 
 * Smaller apks thanks to tamed proguard code trimming.
