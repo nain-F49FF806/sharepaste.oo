@@ -23,8 +23,13 @@ class PrivateBinRs(private val defaultBaseUrl: String? = null) {
         burn = burn ?: false
     )
 
-    fun send(text: String, opts: Opts = defaultOpts): PostPasteResponse {
-        val decryptedPaste = DecryptedPaste(text, null, null)
+    fun send(
+        text: String,
+        opts: Opts = defaultOpts,
+        attachment: String? = null,
+        attachmentName: String? = null
+    ): PostPasteResponse {
+        val decryptedPaste = DecryptedPaste(text, attachment, attachmentName)
         val api = Api(opts.url ?: defaultOpts.url!!, opts)
         val postPasteResponse = api.postPaste(decryptedPaste, opts.password ?: "", opts)
         // postPasteResponse.toUrl(api.base())

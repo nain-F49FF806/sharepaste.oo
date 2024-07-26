@@ -37,10 +37,14 @@ import uniffi.pbcli.PasteFormat
 fun EncryptAndShareUI(
     text: String = "",
     textFormat: PasteFormat? = null,
+    attach: String? = null,
+    attachName: String? = null,
     customPrivatebinHost: String? = null
 ) {
     var textToEncrypt by rememberSaveable { mutableStateOf(text) }
     val textFormat by rememberSaveable { mutableStateOf(textFormat) }
+    val attach by rememberSaveable { mutableStateOf(attach) }
+    val attachName by rememberSaveable { mutableStateOf(attachName) }
     var expiry by rememberSaveable { mutableStateOf("1day") }
     var burnOnRead by rememberSaveable { mutableStateOf(false) }
     val customPrivatebinHost by rememberSaveable { mutableStateOf(customPrivatebinHost) }
@@ -90,7 +94,7 @@ fun EncryptAndShareUI(
             coroutineScope.launch(Dispatchers.IO) {
                 val pb = PrivateBinRs(defaultBaseUrl = customPrivatebinHost)
                 val opts = pb.getOpts(format = textFormat, expire = expiry, burn = burnOnRead)
-                val pbResponse = pb.send(textToEncrypt, opts)
+                val pbResponse = pb.send(textToEncrypt, opts, attach, attachName)
                 shareLink = pbResponse.toPasteUrl()
                 deleteLink = pbResponse.toDeleteUrl()
                 isLoading = false

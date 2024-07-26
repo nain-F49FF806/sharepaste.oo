@@ -4,4 +4,6 @@
     <string name="title_activity_share_text">Encrypt&amp;Share</string>
     <string name="title_activity_settings">Settings</string>
     <string name="default_privatebin_host_url" translatable="false">https://privatebin.net</string>
+    <string name="attachment_name_title">Attachment</string>
+    <string name="attachment_size_title">Size</string>
 </resources>
