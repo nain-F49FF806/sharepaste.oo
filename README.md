@@ -42,6 +42,10 @@ In short:
 When receiver opens the link, the encrypted paste is retrieved, and _decrypted locally_, with server none the wiser regarding it's contents.
 If set to Burn On Read, the server also _immediately_ deletes the paste after it has been retrieved once.
 
+## Usage / Wiki
+
+Please see features+screenshots in [wiki](https://github.com/nain-F49FF806/sharepaste.oo/wiki/sharepaste.oo-Features).
+
 ## Developer section
 
 This app is powered by Kotlin 🏝️ and Rust 🦀.  
@@ -113,7 +117,7 @@ unless you explicitly make additional grants.
 Some ideas / Current to do:
 
 * ~~Receive text share intents, so we can encrypt the shared text~~ [[done](https://github.com/nain-F49FF806/sharepaste.oo/commit/1830278f96e2c414f7b7f2355b6ef0442f909950)]
-* Receive arbitrary file share intents, so we can  encrypt as attachment
+* ~~Receive arbitrary file share intents, so we can  encrypt as attachment~~ [done]
 * Keep a record of shared links (configurable), and their expiry date/time
 
 Once Share Paste is aware of attachments, we can start opening (decryption) links locally.
