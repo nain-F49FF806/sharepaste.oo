@@ -1,4 +1,4 @@
-## Next
+## 2024.08.02
 
 * Display encountered errors instead of crashing the app
 * Share icon now opens chooser for sharing link forward
