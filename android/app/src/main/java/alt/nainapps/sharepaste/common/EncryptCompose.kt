@@ -94,6 +94,9 @@ fun EncryptAndShareUI(
         Button(onClick = {
             // Call your encryption function here
             isLoading = true
+            shareLink = ""
+            deleteLink = ""
+            errorString = ""
             coroutineScope.launch(Dispatchers.IO) {
                 val pb = PrivateBinRs(defaultBaseUrl = customPrivatebinHost)
                 val opts = pb.getOpts(format = textFormat, expire = expiry, burn = burnOnRead)
