@@ -1,3 +1,7 @@
+## Next
+
+* Display encountered errors instead of crashing the app
+
 ## 2024.07.26
 
 * Support sharing text files (plain/markdown/code) as pastes

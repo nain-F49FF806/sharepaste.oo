@@ -19,7 +19,9 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
@@ -27,10 +29,12 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalTextInputService
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import uniffi.pbcli.PasteException
 import uniffi.pbcli.PasteFormat
 
 @Composable
@@ -51,6 +55,7 @@ fun EncryptAndShareUI(
     var shareLink by rememberSaveable { mutableStateOf("") }
     var deleteLink by rememberSaveable { mutableStateOf("") }
     var isLoading by rememberSaveable { mutableStateOf(false) }
+    var errorString by rememberSaveable { mutableStateOf("") }
     val coroutineScope = rememberCoroutineScope()
 
     Column(
@@ -94,9 +99,14 @@ fun EncryptAndShareUI(
             coroutineScope.launch(Dispatchers.IO) {
                 val pb = PrivateBinRs(defaultBaseUrl = customPrivatebinHost)
                 val opts = pb.getOpts(format = textFormat, expire = expiry, burn = burnOnRead)
-                val pbResponse = pb.send(textToEncrypt, opts, attach, attachName)
-                shareLink = pbResponse.toPasteUrl()
-                deleteLink = pbResponse.toDeleteUrl()
+                try {
+                    val pbResponse = pb.send(textToEncrypt, opts, attach, attachName)
+                    shareLink = pbResponse.toPasteUrl()
+                    deleteLink = pbResponse.toDeleteUrl()
+                } catch (e: PasteException) {
+                    errorString = e.toString()
+                }
+
                 isLoading = false
             }
         }) {
@@ -118,6 +128,21 @@ fun EncryptAndShareUI(
 
         if (deleteLink.isNotEmpty()) {
             OutputLinkWithCopyIcon(link = deleteLink, "Early delete link", singleLine = true)
+        }
+        if (errorString.isNotEmpty()) {
+            CompositionLocalProvider(
+                // This disables keyboard functionality for this block
+                LocalTextInputService provides null
+            ) {
+                TextField(
+                    value = errorString,
+                    onValueChange = {},
+                    label = { Text("Error") },
+                    enabled = true,
+                    readOnly = true,
+                    singleLine = false
+                )
+            }
         }
     }
 }

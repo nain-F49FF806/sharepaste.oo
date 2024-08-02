@@ -4,6 +4,7 @@ import java.net.URL
 import uniffi.pbcli.Api
 import uniffi.pbcli.DecryptedPaste
 import uniffi.pbcli.Opts
+import uniffi.pbcli.PasteException
 import uniffi.pbcli.PasteFormat
 import uniffi.pbcli.PostPasteResponse
 import uniffi.pbcli.Url
@@ -23,6 +24,7 @@ class PrivateBinRs(private val defaultBaseUrl: String? = null) {
         burn = burn ?: false
     )
 
+    @Throws(PasteException::class)
     fun send(
         text: String,
         opts: Opts = defaultOpts,
@@ -31,11 +33,10 @@ class PrivateBinRs(private val defaultBaseUrl: String? = null) {
     ): PostPasteResponse {
         val decryptedPaste = DecryptedPaste(text, attachment, attachmentName)
         val api = Api(opts.url ?: defaultOpts.url!!, opts)
-        val postPasteResponse = api.postPaste(decryptedPaste, opts.password ?: "", opts)
-        // postPasteResponse.toUrl(api.base())
-        return postPasteResponse
+        return api.postPaste(decryptedPaste, opts.password ?: "", opts)
     }
 
+    @Throws(PasteException::class)
     fun get(url: String): DecryptedPaste {
         val url = URL(url)
         val base = "${url.protocol}://${url.host}" + if (url.port != -1) ":${url.port}" else ""
