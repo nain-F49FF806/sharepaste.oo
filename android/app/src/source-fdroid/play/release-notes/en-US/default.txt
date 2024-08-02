@@ -1,6 +1,8 @@
 ## Next
 
 * Display encountered errors instead of crashing the app
+* Share icon now opens chooser for sharing link forward
+* Simple copy still supported using content copy icon
 
 ## 2024.07.26
 
