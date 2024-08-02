@@ -1,7 +1,7 @@
 package alt.nainapps.sharepaste.common
 
 import alt.nainapps.sharepaste.common.units.OptionMenu
-import alt.nainapps.sharepaste.common.units.OutputLinkWithCopyIcon
+import alt.nainapps.sharepaste.common.units.OutputLinkWithShareIcon
 import alt.nainapps.sharepaste.common.units.OutputTextWithCopyIcon
 import alt.nainapps.sharepaste.common.units.SwithWithOnOffIcons
 import alt.nainapps.sharepaste.rsnative.PrivateBinRs
@@ -124,11 +124,11 @@ fun EncryptAndShareUI(
         Spacer(modifier = Modifier.height(16.dp))
 
         if (shareLink.isNotEmpty()) {
-            OutputLinkWithCopyIcon(link = shareLink, "Share link")
+            OutputLinkWithShareIcon(link = shareLink, "Share link")
         }
 
         if (deleteLink.isNotEmpty()) {
-            OutputLinkWithCopyIcon(link = deleteLink, "Early delete link", singleLine = true)
+            OutputLinkWithShareIcon(link = deleteLink, "Early delete link", singleLine = true)
         }
         if (errorString.isNotEmpty()) {
             OutputTextWithCopyIcon(text = errorString, "Error")
