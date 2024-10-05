@@ -13,12 +13,15 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.content.ContextCompat.getString
 import me.zhanghai.compose.preference.ProvidePreferenceLocals
 import me.zhanghai.compose.preference.textFieldPreference
 
@@ -42,32 +45,41 @@ class SettingsActivity : ComponentActivity() {
                         )
                     }
                 ) { innerPadding ->
-                    ProvidePreferenceLocals {
-                        LazyColumn(
-                            modifier = Modifier.fillMaxSize().padding(innerPadding)
-                        ) {
-                            textFieldPreference(
-                                key = "privatebin_host_url",
-                                defaultValue = getString(R.string.default_privatebin_host_url),
-                                textToValue = { it },
-                                title = { Text(text = "Privatebin host (server)") },
-                                summary = {
-                                    Text(
-                                        text = if (looksValidUrl(it)) {
-                                            it
-                                        } else {
-                                            "Invalid looking url: " + it.ifBlank { "<empty>" }
-                                        }
-                                    )
-                                }
-                            )
-                        }
+                    Surface(modifier = Modifier.fillMaxSize().padding(innerPadding)) {
+                        SettingsUI()
                     }
                 }
             }
         }
     }
 }
+
+@Composable
+fun SettingsUI() {
+    val context = LocalContext.current
+    ProvidePreferenceLocals {
+        LazyColumn(
+        ) {
+            textFieldPreference(
+                key = "privatebin_host_url",
+                defaultValue = getString(context, R.string.default_privatebin_host_url),
+                textToValue = { it },
+                title = { Text(text = "Privatebin host (server)") },
+                summary = {
+                    Text(
+                        text = if (looksValidUrl(it)) {
+                            it
+                        } else {
+                            "Invalid looking url: " + it.ifBlank { "<empty>" }
+                        }
+                    )
+                }
+            )
+        }
+    }
+}
+
+
 
 fun looksValidUrl(potentialUrl: String) = Patterns.WEB_URL.matcher(potentialUrl).matches()
 

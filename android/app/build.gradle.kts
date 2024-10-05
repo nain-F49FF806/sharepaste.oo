@@ -13,7 +13,7 @@ android {
         applicationId = "alt.nainapps.sharepaste"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1728150000
+        versionCode = 1728159000
         versionName = "2024.10.05"
         setProperty("archivesBaseName", "sharepaste.oo")
 
@@ -112,6 +112,7 @@ dependencies {
     implementation(libs.composePrefs)
     implementation(libs.androidx.preference.ktx)
     implementation(libs.androidx.material.icons.extended)
+    implementation(libs.androidx.navigation.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
