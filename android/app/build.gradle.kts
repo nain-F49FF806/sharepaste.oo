@@ -13,8 +13,8 @@ android {
         applicationId = "alt.nainapps.sharepaste"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1727700000
-        versionName = "2024.09.30"
+        versionCode = 1728150000
+        versionName = "2024.10.05"
         setProperty("archivesBaseName", "sharepaste.oo")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
