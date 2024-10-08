@@ -1,3 +1,8 @@
+## 2024.10.05
+
+* Add Navbar to quickly access (Share, Settings) screens
+* Update dependencies
+
 ## 2024.09.26
 
 * Update dependencies
