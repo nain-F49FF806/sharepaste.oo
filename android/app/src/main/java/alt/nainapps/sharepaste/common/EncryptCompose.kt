@@ -4,7 +4,7 @@ import alt.nainapps.sharepaste.common.units.ExpandableOptionsCard
 import alt.nainapps.sharepaste.common.units.OptionMenu
 import alt.nainapps.sharepaste.common.units.OutputLinkWithShareIcon
 import alt.nainapps.sharepaste.common.units.OutputTextWithCopyIcon
-import alt.nainapps.sharepaste.common.units.SwithWithOnOffIcons
+import alt.nainapps.sharepaste.common.units.SwitchWithOnOffIcons
 import alt.nainapps.sharepaste.rsnative.PrivateBinRs
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -88,7 +88,12 @@ fun EncryptAndShareUI(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        SwithWithOnOffIcons(label = "Burn on read", checked = burnOnRead) { burnOnRead = it }
+        SwitchWithOnOffIcons(label = "Burn on read", checked = burnOnRead) {
+            burnOnRead = it
+            if (burnOnRead) {
+                openDiscussion = false
+            }
+        }
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -96,10 +101,15 @@ fun EncryptAndShareUI(
             title = "More options",
             defaultExpanded = !attachName.isNullOrEmpty()
         ) {
-            SwithWithOnOffIcons(
+            SwitchWithOnOffIcons(
                 label = "Enable Discussions",
                 checked = openDiscussion
-            ) { openDiscussion = it }
+            ) {
+                openDiscussion = it
+                if (openDiscussion) {
+                    burnOnRead = false
+                }
+            }
             if (!attachName.isNullOrEmpty()) {
                 Row(
                     horizontalArrangement = Arrangement.SpaceEvenly,

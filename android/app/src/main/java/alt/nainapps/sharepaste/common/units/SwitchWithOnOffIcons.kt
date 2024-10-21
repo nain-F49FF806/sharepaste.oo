@@ -3,7 +3,6 @@ package alt.nainapps.sharepaste.common.units
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
@@ -13,20 +12,18 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 
 @Composable
-fun SwithWithOnOffIcons (label: String, checked: Boolean = false, onCheckedChange: (Boolean) -> Unit) {
-    var checked by remember { mutableStateOf(checked) }
+fun SwitchWithOnOffIcons(
+    label: String,
+    checked: Boolean = false,
+    onCheckedChange: (Boolean) -> Unit
+) {
     // Icon isn't focusable, so no need for content description here
     val icon: (@Composable () -> Unit)? = if (checked) {
         {
@@ -54,10 +51,7 @@ fun SwithWithOnOffIcons (label: String, checked: Boolean = false, onCheckedChang
         Switch(
             modifier = Modifier.semantics { contentDescription = "$label toggle switch" },
             checked = checked,
-            onCheckedChange = {
-                checked = it
-                onCheckedChange(checked)
-            },
+            onCheckedChange = onCheckedChange,
             thumbContent = icon
         )
     }
@@ -67,5 +61,5 @@ fun SwithWithOnOffIcons (label: String, checked: Boolean = false, onCheckedChang
 @Preview(showBackground = true)
 @Composable
 fun ToggleSwitchPreview() {
-    SwithWithOnOffIcons(label = "Let's do this?", checked = true) {}
+    SwitchWithOnOffIcons(label = "Let's do this?", checked = true) {}
 }
