@@ -1,6 +1,5 @@
 package alt.nainapps.sharepaste.rsnative
 
-import java.net.URL
 import uniffi.pbcli.Api
 import uniffi.pbcli.DecryptedPaste
 import uniffi.pbcli.Opts
@@ -8,6 +7,7 @@ import uniffi.pbcli.PasteException
 import uniffi.pbcli.PasteFormat
 import uniffi.pbcli.PostPasteResponse
 import uniffi.pbcli.Url
+import java.net.URL
 
 class PrivateBinRs(private val defaultBaseUrl: String? = null) {
     private val defaultOpts = getOpts()
@@ -16,12 +16,14 @@ class PrivateBinRs(private val defaultBaseUrl: String? = null) {
         url: Url? = null,
         format: PasteFormat? = null,
         expire: String? = null,
-        burn: Boolean? = null
+        burn: Boolean? = null,
+        discussion: Boolean? = null
     ): Opts = Opts(
         url = url ?: defaultBaseUrl ?: "https://privatebin.net",
         format = format ?: PasteFormat.PLAINTEXT,
         expire = expire ?: "5min",
-        burn = burn ?: false
+        burn = burn ?: false,
+        discussion = discussion ?: false
     )
 
     @Throws(PasteException::class)

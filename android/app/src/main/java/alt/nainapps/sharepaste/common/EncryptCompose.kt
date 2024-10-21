@@ -1,5 +1,6 @@
 package alt.nainapps.sharepaste.common
 
+import alt.nainapps.sharepaste.common.units.ExpandableOptionsCard
 import alt.nainapps.sharepaste.common.units.OptionMenu
 import alt.nainapps.sharepaste.common.units.OutputLinkWithShareIcon
 import alt.nainapps.sharepaste.common.units.OutputTextWithCopyIcon
@@ -53,6 +54,10 @@ fun EncryptAndShareUI(
     var shareLink by rememberSaveable { mutableStateOf("") }
     var deleteLink by rememberSaveable { mutableStateOf("") }
     var isLoading by rememberSaveable { mutableStateOf(false) }
+    var openDiscussion by rememberSaveable { mutableStateOf(false) }
+    var moreOptionCardExpandrd by rememberSaveable {
+        mutableStateOf(!attachName.isNullOrEmpty())
+    }
     var errorString by rememberSaveable { mutableStateOf("") }
     val coroutineScope = rememberCoroutineScope()
 
@@ -91,6 +96,12 @@ fun EncryptAndShareUI(
 
         Spacer(modifier = Modifier.height(16.dp))
 
+        ExpandableOptionsCard(title = "More options") {
+            SwithWithOnOffIcons(label = "Enable Discussions") { openDiscussion = it }
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
         Button(onClick = {
             // Call your encryption function here
             isLoading = true
@@ -99,7 +110,12 @@ fun EncryptAndShareUI(
             errorString = ""
             coroutineScope.launch(Dispatchers.IO) {
                 val pb = PrivateBinRs(defaultBaseUrl = customPrivatebinHost)
-                val opts = pb.getOpts(format = textFormat, expire = expiry, burn = burnOnRead)
+                val opts = pb.getOpts(
+                    format = textFormat,
+                    expire = expiry,
+                    burn = burnOnRead,
+                    discussion = openDiscussion
+                )
                 try {
                     val pbResponse = pb.send(textToEncrypt, opts, attach, attachName)
                     shareLink = pbResponse.toPasteUrl()
