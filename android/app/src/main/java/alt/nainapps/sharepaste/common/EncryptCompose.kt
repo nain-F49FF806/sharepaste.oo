@@ -8,6 +8,7 @@ import alt.nainapps.sharepaste.common.units.SwithWithOnOffIcons
 import alt.nainapps.sharepaste.rsnative.PrivateBinRs
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,6 +30,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.Dispatchers
@@ -42,22 +44,16 @@ fun EncryptAndShareUI(
     textFormat: PasteFormat? = null,
     attach: String? = null,
     attachName: String? = null,
+    attachRawSize: String? = null,
     customPrivatebinHost: String? = null
 ) {
     var textToEncrypt by rememberSaveable { mutableStateOf(text) }
-    val textFormat by rememberSaveable { mutableStateOf(textFormat) }
-    val attach by rememberSaveable { mutableStateOf(attach) }
-    val attachName by rememberSaveable { mutableStateOf(attachName) }
     var expiry by rememberSaveable { mutableStateOf("1day") }
     var burnOnRead by rememberSaveable { mutableStateOf(false) }
-    val customPrivatebinHost by rememberSaveable { mutableStateOf(customPrivatebinHost) }
     var shareLink by rememberSaveable { mutableStateOf("") }
     var deleteLink by rememberSaveable { mutableStateOf("") }
     var isLoading by rememberSaveable { mutableStateOf(false) }
     var openDiscussion by rememberSaveable { mutableStateOf(false) }
-    var moreOptionCardExpandrd by rememberSaveable {
-        mutableStateOf(!attachName.isNullOrEmpty())
-    }
     var errorString by rememberSaveable { mutableStateOf("") }
     val coroutineScope = rememberCoroutineScope()
 
@@ -92,12 +88,31 @@ fun EncryptAndShareUI(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        SwithWithOnOffIcons(label = "Burn on read") { burnOnRead = it }
+        SwithWithOnOffIcons(label = "Burn on read", checked = burnOnRead) { burnOnRead = it }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        ExpandableOptionsCard(title = "More options") {
-            SwithWithOnOffIcons(label = "Enable Discussions") { openDiscussion = it }
+        ExpandableOptionsCard(
+            title = "More options",
+            defaultExpanded = !attachName.isNullOrEmpty()
+        ) {
+            SwithWithOnOffIcons(
+                label = "Enable Discussions",
+                checked = openDiscussion
+            ) { openDiscussion = it }
+            if (!attachName.isNullOrEmpty()) {
+                Row(
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(
+                        text = "Attachment",
+                        fontWeight = FontWeight.Medium
+                    )
+                    Text(text = "$attachName ($attachRawSize)")
+                }
+
+            }
         }
 
         Spacer(modifier = Modifier.height(16.dp))

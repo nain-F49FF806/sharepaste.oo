@@ -10,8 +10,10 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -27,8 +29,14 @@ fun ExpandableOptionsCard(
     content: @Composable() (ColumnScope.() -> Unit)
 ) {
     var isExpanded by rememberSaveable { mutableStateOf(defaultExpanded) }
+    var timesClicked by rememberSaveable { mutableIntStateOf(0) }
     Card(
-        onClick = { isExpanded = !isExpanded },
+        onClick = {
+            isExpanded = !isExpanded
+            if (isExpanded) {
+                timesClicked += 1
+            }
+        },
         modifier = modifier,
         elevation = CardDefaults.outlinedCardElevation(),
         colors = CardDefaults.outlinedCardColors()
@@ -43,8 +51,11 @@ fun ExpandableOptionsCard(
             Text(
                 title,
                 fontSize = 18.sp,
-                modifier = textModifier
+                modifier = textModifier,
             )
+            if (timesClicked == 5) {
+                Egg()
+            }
             if (!isExpanded) {
                 Text(
                     "Expand",
@@ -55,7 +66,7 @@ fun ExpandableOptionsCard(
                 Text(
                     "Collapse",
                     color = MaterialTheme.colorScheme.primary,
-                    modifier = textModifier
+                    modifier = textModifier,
                 )
             }
         }
@@ -64,4 +75,23 @@ fun ExpandableOptionsCard(
             content()
         }
     }
+}
+
+@Composable
+fun Egg() {
+    var timesNubbed by rememberSaveable { mutableStateOf(0) }
+
+    fun moan(timesNubbed: Int): String {
+        return when {
+            timesNubbed < 5 -> "More" + "More".repeat(timesNubbed / 2)
+            timesNubbed < 7 -> "MoreMoreMore"
+            timesNubbed < 9 -> "\uD83E\uDD29"
+            (timesNubbed > 9) and (timesNubbed < 12) -> "\uD83D\uDCA6"
+            timesNubbed == 12 -> "\uD83D\uDE2D"
+            (timesNubbed > 25) and (timesNubbed < 35) -> "\uD83E\uDD95"
+            timesNubbed > 35 -> "\uD83E\uDD88"
+            else -> "☺\uFE0F"
+        }
+    }
+    TextButton(onClick = { timesNubbed += 1 }) { Text(moan(timesNubbed)) }
 }

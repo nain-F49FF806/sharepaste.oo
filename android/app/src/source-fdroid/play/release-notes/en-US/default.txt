@@ -1,6 +1,9 @@
-##
+## 2024.10.21
 
+* Add More Options section
 * Add option to enable discussions
+* Move attachment info into new "More Options" section
+  - Info automagically appears when attachment shared to SharePaste
 * Update dependencies
 
 ## 2024.10.05
