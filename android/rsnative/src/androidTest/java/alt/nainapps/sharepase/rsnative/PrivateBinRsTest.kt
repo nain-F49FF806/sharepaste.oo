@@ -1,5 +1,6 @@
 package alt.nainapps.sharepase.rsnative
 
+import alt.nainapps.sharepaste.rsnative.PrivateBinRs
 import org.junit.Assert
 import org.junit.Test
 
@@ -14,8 +15,9 @@ class PrivateBinRsTest {
 
     @Test
     fun download_hi() {
-        // Test url valid up to 2024-05-01
-        val url = "https://privatebin.net/?2ea20a8f3551c41b#61T5hUAekhtgdQPm3yw2dwaRBya3rS3g4GP6enEUYeNv"
+        // Test url valid up to 2025-10-25
+        val url =
+            "https://pb.envs.net/?8222c5b2987f4594#55mDhNz3BkMscWYphyL9ptJS5BN6VDU5acABhADqQroK"
         val decryptedPaste = PrivateBinRs().get(url)
         Assert.assertEquals(decryptedPaste.paste, "hi")
         println(decryptedPaste)

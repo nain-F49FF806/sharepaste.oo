@@ -1,4 +1,4 @@
 [submodule "rust/pbcli"]
 	path = rust/pbcli
-	url = https://github.com/nain-F49FF806/pbcli.git
-	branch = uniffi
+	url = https://github.com/Mydayyy/pbcli.git
+	branch = master
