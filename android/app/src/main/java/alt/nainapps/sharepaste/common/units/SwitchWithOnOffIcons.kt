@@ -25,7 +25,7 @@ fun SwitchWithOnOffIcons(
     onCheckedChange: (Boolean) -> Unit
 ) {
     // Icon isn't focusable, so no need for content description here
-    val icon: (@Composable () -> Unit)? = if (checked) {
+    val icon: (@Composable () -> Unit) = if (checked) {
         {
             Icon(
                 imageVector = Icons.Filled.Check,
