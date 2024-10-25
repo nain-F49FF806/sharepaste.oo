@@ -12,7 +12,7 @@ android {
     defaultConfig {
         applicationId = "alt.nainapps.sharepaste"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1729870000
         versionName = "2024.10.25"
         setProperty("archivesBaseName", "sharepaste.oo")

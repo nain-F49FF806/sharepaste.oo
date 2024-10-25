@@ -37,6 +37,7 @@ dependencies {
     implementation libs.material
     // Essential! Note that UniFFI dictates the minimum supported version, and this may change with new releases
     // Note. I couldn't get this to work with libs catalog. This needs to be here.
+    //noinspection UseTomlInstead
     implementation "net.java.dev.jna:jna:5.15.0@aar"
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
