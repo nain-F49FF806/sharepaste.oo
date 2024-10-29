@@ -5,6 +5,8 @@ import alt.nainapps.sharepaste.common.units.OptionMenu
 import alt.nainapps.sharepaste.common.units.OutputLinkWithShareIcon
 import alt.nainapps.sharepaste.common.units.OutputTextWithCopyIcon
 import alt.nainapps.sharepaste.common.units.SwitchWithOnOffIcons
+import alt.nainapps.sharepaste.common.units.TextModeToggleIconButton
+import alt.nainapps.sharepaste.common.units.pasteFormatToggle
 import alt.nainapps.sharepaste.rsnative.PrivateBinRs
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -48,6 +50,7 @@ fun EncryptAndShareUI(
     customPrivatebinHost: String? = null
 ) {
     var textToEncrypt by rememberSaveable { mutableStateOf(text) }
+    var pasteFormat by rememberSaveable { mutableStateOf(textFormat ?: PasteFormat.PLAINTEXT) }
     var expiry by rememberSaveable { mutableStateOf("1day") }
     var burnOnRead by rememberSaveable { mutableStateOf(false) }
     var shareLink by rememberSaveable { mutableStateOf("") }
@@ -70,6 +73,12 @@ fun EncryptAndShareUI(
             value = textToEncrypt,
             onValueChange = { textToEncrypt = it },
             label = { Text("Text to encrypt and share") },
+            trailingIcon = {
+                TextModeToggleIconButton(
+                    mode = pasteFormat,
+                    onCLick = { pasteFormat = pasteFormatToggle(pasteFormat) }
+                )
+            },
             modifier = Modifier.fillMaxWidth(),
             singleLine = false,
             minLines = 3
@@ -136,7 +145,7 @@ fun EncryptAndShareUI(
             coroutineScope.launch(Dispatchers.IO) {
                 val pb = PrivateBinRs(defaultBaseUrl = customPrivatebinHost)
                 val opts = pb.getOpts(
-                    format = textFormat,
+                    format = pasteFormat,
                     expire = expiry,
                     burn = burnOnRead,
                     discussion = openDiscussion
