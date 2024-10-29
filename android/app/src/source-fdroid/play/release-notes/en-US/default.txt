@@ -1,3 +1,9 @@
+##
+
+* Add Paste format toggle icon
+* Use upstream pbcli
+* Update dependencies
+
 ## 2024.10.21
 
 * Add More Options section

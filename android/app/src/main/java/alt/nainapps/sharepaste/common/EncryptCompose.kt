@@ -72,7 +72,13 @@ fun EncryptAndShareUI(
         OutlinedTextField(
             value = textToEncrypt,
             onValueChange = { textToEncrypt = it },
-            label = { Text("Text to encrypt and share") },
+            label = {
+                when (pasteFormat) {
+                    PasteFormat.PLAINTEXT -> Text("Text to encrypt and share")
+                    PasteFormat.MARKDOWN -> Text("Markdown to encrypt and share")
+                    PasteFormat.SYNTAX -> Text("Code to encrypt and share")
+                }
+            },
             trailingIcon = {
                 TextModeToggleIconButton(
                     mode = pasteFormat,

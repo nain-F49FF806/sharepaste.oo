@@ -28,7 +28,7 @@ fun TextModeToggleIconButton(mode: PasteFormat, onCLick: () -> Unit) {
             )
 
             PasteFormat.MARKDOWN -> Icon(
-                painter = painterResource(id = R.drawable.markdown_24px),
+                painter = painterResource(id = R.drawable.markdown_filled_24px),
                 contentDescription = mode.toString(),
                 modifier = Modifier.size(SwitchDefaults.IconSize)
             )
