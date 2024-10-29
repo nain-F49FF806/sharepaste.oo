@@ -29,7 +29,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -64,7 +63,6 @@ fun EncryptAndShareUI(
     var openDiscussion by rememberSaveable { mutableStateOf(false) }
     var errorString by rememberSaveable { mutableStateOf("") }
     val coroutineScope = rememberCoroutineScope()
-    var textFieldHeight: Int? by remember { mutableStateOf(null) }
 
     Column(
         modifier =
@@ -76,6 +74,7 @@ fun EncryptAndShareUI(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         val density = LocalDensity.current
+        var textFieldHeight: Int? by rememberSaveable { mutableStateOf(null) }
         OutlinedTextField(
             value = textToEncrypt,
             onValueChange = { textToEncrypt = it },
@@ -88,7 +87,6 @@ fun EncryptAndShareUI(
             },
             singleLine = false,
             minLines = 3,
-
             modifier = Modifier
                 .fillMaxWidth()
                 .onSizeChanged { textFieldHeight = it.height },

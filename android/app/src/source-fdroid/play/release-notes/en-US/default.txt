@@ -1,8 +1,9 @@
-##
+## 2024.10.29
 
-* Add Paste format toggle icon
-* Use upstream pbcli
-* Update dependencies
+* Use upstream pbcli rust code
+  - which now include our uniffi bindings contribution!
+* Allow changing paste format manually with cute format toggle icon
+* Update and fix test
 
 ## 2024.10.21
 
