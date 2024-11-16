@@ -1,6 +1,5 @@
 package alt.nainapps.sharepaste.common.units
 
-import alt.nainapps.sharepaste.utils.TAG
 import alt.nainapps.sharepaste.utils.bytesToHumanReadableSize
 import alt.nainapps.sharepaste.utils.inputStreamToBase64String
 import android.content.ContentResolver
@@ -52,6 +51,7 @@ fun AttachmentPickerButton(prevAttachment: Attachment? = null, onAttach: (Attach
     }
 }
 
+const val TAG = "Attachment"
 
 data class Attachment(
     // data uri containing attachment data
