@@ -4,10 +4,9 @@
 
 Share Paste is a [privatebin](https://privatebin.net/) client for android.  
 
-![invite](.github/.assets/screenshots/invite.jpg)
-![process](.github/.assets/screenshots/process.jpg)
-![output](.github/.assets/screenshots/output.jpg)
-![dark](.github/.assets/screenshots/dark.jpg)
+<img src="https://github.com/nain-F49FF806/sharepaste.oo/blob/2024.06.05/android/app/src/source-fdroid/play/listings/en-US/graphics/phone-screenshots/invite-enter.jpg" alt="invite" width="300"/>
+<img src="https://github.com/nain-F49FF806/sharepaste.oo/blob/2024.06.05/android/app/src/source-fdroid/play/listings/en-US/graphics/phone-screenshots/dark.jpg" alt="share" width="300"/>
+<img src="https://github.com/nain-F49FF806/sharepaste.oo/blob/2024.07.26/android/app/src/source-fdroid/play/listings/en-US/graphics/phone-screenshots/share-media-attachment.jpg" alt="attachment" width="300"/>
 
 This app allows you to quickly share text, in such a way that the hosting privatebin server
 can't read contents of the paste you have shared. Or in other words, your share is _end to end encrypted_.
