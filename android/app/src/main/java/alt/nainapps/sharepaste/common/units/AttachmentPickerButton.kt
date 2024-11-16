@@ -63,8 +63,8 @@ data class Attachment(
 
 fun getAttachmentFromFileUri(contentResolver: ContentResolver, fileUri: Uri): Attachment? {
     val attachData: String
-    var attachName: String = "unknown name"
-    var attachSize: String = "unknown size"
+    var attachName = "unknown name"
+    var attachSize = "unknown size"
     var attachment: Attachment? = null
     try {
         val mimeType = contentResolver.getType(fileUri).also {

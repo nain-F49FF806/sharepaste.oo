@@ -25,10 +25,6 @@ class ShareAttachActivity : ComponentActivity() {
             "This activity is expected to be intent filtered to Intent.ACTION_SEND"
         }
         @Suppress("ktlint:standard:property-naming")
-        val TAG = "ShareAttachActivity"
-        var attach: String? = null
-        var attachName: String? = null
-        var attachSize: String? = "unknown size"
         val customPrivatebinHost = PreferenceManager.getDefaultSharedPreferences(
             this
         ).getString("privatebin_host_url", null)
