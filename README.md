@@ -4,10 +4,11 @@
 
 Share Paste is a [privatebin](https://privatebin.net/) client for android.  
 
-<img src="https://github.com/nain-F49FF806/sharepaste.oo/blob/2024.06.05/android/app/src/source-fdroid/play/listings/en-US/graphics/phone-screenshots/invite-enter.jpg" alt="invite" width="300"/> <img src="https://github.com/nain-F49FF806/sharepaste.oo/blob/2024.06.05/android/app/src/source-fdroid/play/listings/en-US/graphics/phone-screenshots/dark.jpg" alt="share" width="300"/> <img src="https://github.com/nain-F49FF806/sharepaste.oo/blob/2024.07.26/android/app/src/source-fdroid/play/listings/en-US/graphics/phone-screenshots/share-media-attachment.jpg" alt="attachment" width="300"/> 
+<img src="https://github.com/nain-F49FF806/sharepaste.oo/blob/2024.06.05/android/app/src/source-fdroid/play/listings/en-US/graphics/phone-screenshots/invite-enter.jpg" alt="invite" width="300"/> <img src="https://github.com/nain-F49FF806/sharepaste.oo/blob/2024.06.05/android/app/src/source-fdroid/play/listings/en-US/graphics/phone-screenshots/invite-enter-upload.jpg" alt="share" width="300"/>  <img src="https://github.com/nain-F49FF806/sharepaste.oo/blob/2024.06.05/android/app/src/source-fdroid/play/listings/en-US/graphics/phone-screenshots/dark.jpg" alt="share" width="300"/> <img src="https://github.com/nain-F49FF806/sharepaste.oo/blob/2024.07.26/android/app/src/source-fdroid/play/listings/en-US/graphics/phone-screenshots/share-media-attachment.jpg" alt="attachment" width="300"/> 
 
-This app allows you to quickly share text, in such a way that the hosting privatebin server
-can't read contents of the paste you have shared. Or in other words, your share is _end to end encrypted_.
+
+This app allows you to quickly share some text and optionally an attachment, such that the hosting server
+can't read the contents of the paste you share. In other words, your share is _end to end encrypted_.
 Also you can set your paste to expire and auto destruct 💣 after a set duration. Or burn
 on read 🔥 (Mission Impossible style) if you like, to prevent unintended persons from accessing it later.
 
