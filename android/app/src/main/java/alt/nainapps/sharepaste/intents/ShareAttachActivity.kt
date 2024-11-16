@@ -1,15 +1,12 @@
 package alt.nainapps.sharepaste.intents
 
 import alt.nainapps.sharepaste.common.EncryptAndShareUI
+import alt.nainapps.sharepaste.common.units.getAttachmentFromFileUri
 import alt.nainapps.sharepaste.intents.ui.theme.SharePasteO2Theme
-import alt.nainapps.sharepaste.utils.bytesToHumanReadableSize
-import alt.nainapps.sharepaste.utils.inputStreamToBase64String
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
-import android.provider.OpenableColumns
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,8 +17,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.preference.PreferenceManager
-import java.io.FileNotFoundException
-import java.io.IOException
 
 class ShareAttachActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,49 +40,7 @@ class ShareAttachActivity : ComponentActivity() {
         val contentUri: Uri? = intent.getParcelableExtra<Parcelable>(
             Intent.EXTRA_STREAM
         ) as? Uri
-
-        contentUri?.let { contentUri ->
-            try {
-                val mimeType = contentResolver.getType(contentUri).also {
-                    Log.i(TAG, "Attach file type: $it")
-                } ?: ""
-
-                /*
-                 * Get the file's content URI from the incoming Intent,
-                 * then query the server app to get the file's display name
-                 * and size.
-                 */
-                contentResolver.query(contentUri, null, null, null, null)?.use { cursor ->
-                    /*
-                     * Get the column indexes of the data in the Cursor,
-                     * move to the first row in the Cursor, get the data,
-                     * and display it.
-                     */
-                    val nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
-                    val sizeIndex = cursor.getColumnIndex(OpenableColumns.SIZE)
-                    cursor.moveToFirst()
-                    attachName = cursor.getString(nameIndex)
-                    attachSize = bytesToHumanReadableSize(cursor.getLong(sizeIndex))
-                }
-
-                contentResolver.openInputStream(contentUri)?.use { inputStream ->
-                    // inputStream is guaranteed to be non-null here
-                    // Process the input stream
-                    Log.i(TAG, "Processing input stream...")
-                    // Convert InputStream to Base64 String
-                    inputStreamToBase64String(inputStream).let {
-                        // Construct the Data URI
-                        attach = "data:$mimeType;base64,$it"
-                    }
-                }
-            } catch (e: FileNotFoundException) {
-                // Handle the case where the file was not found
-                Log.e(TAG, "File not found: ${e.message}")
-            } catch (e: IOException) {
-                // Handle general IO errors, including permission issues
-                Log.e(TAG, "IO Error: ${e.message}")
-            }
-        }
+        val attachment = contentUri?.let { getAttachmentFromFileUri(contentResolver, it) }
 
         setContent {
             SharePasteO2Theme {
@@ -99,9 +52,7 @@ class ShareAttachActivity : ComponentActivity() {
                     // Note: TODO("We should maybe warn when too big file size")
                     EncryptAndShareUI(
                         text = text,
-                        attach = attach,
-                        attachName = attachName,
-                        attachRawSize = attachSize,
+                        sharedAttachment = attachment,
                         customPrivatebinHost = customPrivatebinHost
                     )
                 }

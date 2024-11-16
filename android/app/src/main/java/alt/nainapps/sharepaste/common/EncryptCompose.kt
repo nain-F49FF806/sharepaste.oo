@@ -1,5 +1,7 @@
 package alt.nainapps.sharepaste.common
 
+import alt.nainapps.sharepaste.common.units.Attachment
+import alt.nainapps.sharepaste.common.units.AttachmentPickerButton
 import alt.nainapps.sharepaste.common.units.ExpandableOptionsCard
 import alt.nainapps.sharepaste.common.units.OptionMenu
 import alt.nainapps.sharepaste.common.units.OutputLinkWithShareIcon
@@ -11,7 +13,6 @@ import alt.nainapps.sharepaste.rsnative.PrivateBinRs
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -36,7 +37,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.Dispatchers
@@ -48,13 +48,14 @@ import uniffi.pbcli.PasteFormat
 fun EncryptAndShareUI(
     text: String = "",
     textFormat: PasteFormat? = null,
-    attach: String? = null,
-    attachName: String? = null,
-    attachRawSize: String? = null,
+    sharedAttachment: Attachment? = null,
     customPrivatebinHost: String? = null
 ) {
     var textToEncrypt by rememberSaveable { mutableStateOf(text) }
     var pasteFormat by rememberSaveable { mutableStateOf(textFormat ?: PasteFormat.PLAINTEXT) }
+    var attach by rememberSaveable { mutableStateOf(sharedAttachment?.data) }
+    var attachName by rememberSaveable { mutableStateOf(sharedAttachment?.name) }
+    var attachSize by rememberSaveable { mutableStateOf(sharedAttachment?.size) }
     var expiry by rememberSaveable { mutableStateOf("1day") }
     var burnOnRead by rememberSaveable { mutableStateOf(false) }
     var shareLink by rememberSaveable { mutableStateOf("") }
@@ -75,6 +76,7 @@ fun EncryptAndShareUI(
     ) {
         val density = LocalDensity.current
         var textFieldHeight: Int? by rememberSaveable { mutableStateOf(null) }
+        // offer soln https://stackoverflow.com/questions/76289529/how-to-make-leadingicon-in-outlinedtextfield-align-to-the-top-of-the-outline-in
         OutlinedTextField(
             value = textToEncrypt,
             onValueChange = { textToEncrypt = it },
@@ -134,7 +136,7 @@ fun EncryptAndShareUI(
 
         ExpandableOptionsCard(
             title = "More options",
-            defaultExpanded = !attachName.isNullOrEmpty()
+            defaultExpanded = (sharedAttachment != null)
         ) {
             SwitchWithOnOffIcons(
                 label = "Enable Discussions",
@@ -145,19 +147,13 @@ fun EncryptAndShareUI(
                     burnOnRead = false
                 }
             }
-            if (!attachName.isNullOrEmpty()) {
-                Row(
-                    horizontalArrangement = Arrangement.SpaceEvenly,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text(
-                        text = "Attachment",
-                        fontWeight = FontWeight.Medium
-                    )
-                    Text(text = "$attachName ($attachRawSize)")
+            AttachmentPickerButton(attach?.let { Attachment(it, attachName, attachSize) }) {
+                attach = it?.data
+                attachName = it?.name
+                attachSize = it?.size
                 }
 
-            }
+
         }
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -177,7 +173,8 @@ fun EncryptAndShareUI(
                     discussion = openDiscussion
                 )
                 try {
-                    val pbResponse = pb.send(textToEncrypt, opts, attach, attachName)
+                    val pbResponse =
+                        pb.send(textToEncrypt, opts, attach, attachName)
                     shareLink = pbResponse.toPasteUrl()
                     deleteLink = pbResponse.toDeleteUrl()
                 } catch (e: PasteException) {
