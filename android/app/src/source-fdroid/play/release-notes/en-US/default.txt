@@ -1,3 +1,10 @@
+## 2024.11.16
+
+* Add attachment button
+* Improve attachment info presentation
+* Allow clearing of the added attachment
+* Update dependencies
+
 ## 2024.10.29
 
 * Use upstream pbcli rust code
