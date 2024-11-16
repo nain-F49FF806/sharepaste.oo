@@ -7,13 +7,13 @@ plugins {
 
 android {
     namespace = "alt.nainapps.sharepaste"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "alt.nainapps.sharepaste"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1731761000
+        versionCode = 1731762000
         versionName = "2024.11.16"
         setProperty("archivesBaseName", "sharepaste.oo")
 
