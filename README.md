@@ -4,7 +4,7 @@
 
 Share Paste is a [privatebin](https://privatebin.net/) client for android.  
 
-<img src="https://github.com/nain-F49FF806/sharepaste.oo/blob/2024.06.05/android/app/src/source-fdroid/play/listings/en-US/graphics/phone-screenshots/invite-enter.jpg" alt="invite" width="300"/> <img src="https://github.com/nain-F49FF806/sharepaste.oo/blob/2024.06.05/android/app/src/source-fdroid/play/listings/en-US/graphics/phone-screenshots/invite-enter-upload.jpg" alt="share" width="300"/>  <img src="https://github.com/nain-F49FF806/sharepaste.oo/blob/2024.06.05/android/app/src/source-fdroid/play/listings/en-US/graphics/phone-screenshots/dark.jpg" alt="share" width="300"/> <img src="https://github.com/nain-F49FF806/sharepaste.oo/blob/2024.07.26/android/app/src/source-fdroid/play/listings/en-US/graphics/phone-screenshots/share-media-attachment.jpg" alt="attachment" width="300"/> 
+<img src="https://github.com/nain-F49FF806/sharepaste.oo/blob/2024.06.05/android/app/src/source-fdroid/play/listings/en-US/graphics/phone-screenshots/invite-enter.jpg" alt="invite" width="250"/>   <img src="https://github.com/nain-F49FF806/sharepaste.oo/blob/2024.06.05/android/app/src/source-fdroid/play/listings/en-US/graphics/phone-screenshots/dark.jpg" alt="share" width="250"/> <img src="https://github.com/nain-F49FF806/sharepaste.oo/blob/2024.07.26/android/app/src/source-fdroid/play/listings/en-US/graphics/phone-screenshots/share-media-attachment.jpg" alt="attachment" width="250"/> 
 
 
 This app allows you to quickly share some text and optionally an attachment, such that the hosting server
