@@ -15,7 +15,7 @@ rustCargoNdk = "0.3.4"
 composePrefs = "1.1.1"
 preferenceKtx = "1.2.1"
 materialIconsExtended = "1.7.5"
-navigationCompose = "2.8.4"
+navigationCompose = "2.8.5"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
