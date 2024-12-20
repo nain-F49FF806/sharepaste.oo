@@ -1,3 +1,13 @@
+## 2024.12.20
+
+* Merry Christmas!:
+  - Being Naughty or Nice
+  - Playing with ice ☃️ or fiery spice ❤️‍🔥
+  - Only Santa NEEDS to know it all,
+  - Anyone else, with your consent and willful choice.
+    - Do NOT let *anybody* treat you otherwise.
+* Update dependencies and compile sdk (35, Android 15)
+
 ## 2024.11.16
 
 * Add attachment button
