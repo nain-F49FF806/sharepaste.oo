@@ -8,6 +8,7 @@ plugins {
 android {
     namespace = "alt.nainapps.sharepaste"
     compileSdk = 35
+    ndkVersion = "27.0.12077973"
 
     defaultConfig {
         applicationId = "alt.nainapps.sharepaste"
@@ -93,7 +94,6 @@ android {
             dimension = "source"
         }
     }
-    ndkVersion = "25.1.8937393"
 }
 
 dependencies {

@@ -7,6 +7,7 @@ plugins {
 android {
     namespace 'alt.nainapps.sharepase.rsnative'
     compileSdk 34
+    ndkVersion "27.0.12077973"
 
     defaultConfig {
         minSdk 26
