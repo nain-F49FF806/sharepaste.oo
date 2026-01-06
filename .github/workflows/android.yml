@@ -48,7 +48,7 @@ jobs:
     - name: rust targets
       run: rustup target add aarch64-linux-android armv7-linux-androideabi
     - name: rust cache
-      uses: actions/cache@v4.0.2
+      uses: actions/cache@v4
       with:
         # A list of files, directories, and wildcard patterns to cache and restore
         path: |
