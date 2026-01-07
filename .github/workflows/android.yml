@@ -40,8 +40,8 @@ jobs:
     
     - name: Install NDK
       run: |
-        sdkmanager --install "ndk;27.0.12077973"
-        echo "ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/27.0.12077973" >> $GITHUB_ENV
+        sdkmanager --install "ndk;26.1.10909125"
+        echo "ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/26.1.10909125" >> $GITHUB_ENV
 
     - name: rust deps
       run: cargo install cargo-ndk@3.4.0 --locked
