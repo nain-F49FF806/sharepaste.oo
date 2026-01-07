@@ -35,6 +35,14 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+    
+    - name: Install NDK
+      run: |
+        sdkmanager --install "ndk;26.1.10909125"
+        echo "ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/26.1.10909125" >> $GITHUB_ENV
+
     - name: rust deps
       run: cargo install cargo-ndk@3.4.0 --locked
     - name: rust targets
