@@ -116,7 +116,7 @@ fun EncryptAndShareUI(
 
         OptionMenu(
             label = "expiry",
-            options = listOf("5min", "1hour", "1day", "1week", "1month"),
+            options = listOf("5min", "10min" "1hour", "1day", "1week", "1month", "12months", "Never"),
             defaultOption = expiry
         ) {
             expiry = it
