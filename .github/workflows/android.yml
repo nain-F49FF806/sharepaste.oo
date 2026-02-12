@@ -35,12 +35,20 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+    
+    - name: Install NDK
+      run: |
+        sdkmanager --install "ndk;26.1.10909125"
+        echo "ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/26.1.10909125" >> $GITHUB_ENV
+
     - name: rust deps
       run: cargo install cargo-ndk@3.4.0 --locked
     - name: rust targets
       run: rustup target add aarch64-linux-android armv7-linux-androideabi
     - name: rust cache
-      uses: actions/cache@v4.0.2
+      uses: actions/cache@v5.0.1
       with:
         # A list of files, directories, and wildcard patterns to cache and restore
         path: |
@@ -118,7 +126,7 @@ jobs:
 
     - name: Upload Build Artifacts (Apks)
       if: ${{ !(github.event_name == 'release') }}
-      uses: actions/upload-artifact@v4.3.4
+      uses: actions/upload-artifact@v6.0.0
       with:
         # Artifact name
         name: BuiltApks-${{ github.sha }}
@@ -128,4 +136,4 @@ jobs:
         compression-level: 9
         # If true, an artifact with a matching name will be deleted before a new one is uploaded. If false, the action will fail if an artifact for the given name already exists. Does not fail if the artifact does not exist.
         #overwrite: # optional, default is false
-              
+
